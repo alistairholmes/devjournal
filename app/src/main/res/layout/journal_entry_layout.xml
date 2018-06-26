@@ -19,11 +19,13 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/entry_day"
             tools:text="26" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/entry_month"
             tools:text="Jun" />
 
     </LinearLayout>
