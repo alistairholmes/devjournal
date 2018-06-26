@@ -50,7 +50,7 @@ public class JournalEntry {
         return description;
     }
 
-    public Date getUpdated_at() {
+    public Date getUpdatedAt() {
         return updated_at;
     }
 
