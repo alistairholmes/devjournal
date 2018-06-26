@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "292098240850",
+    "firebase_url": "https://devjournal-dc96c.firebaseio.com",
+    "project_id": "devjournal-dc96c",
+    "storage_bucket": "devjournal-dc96c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:292098240850:android:fd3b109c5579e359",
+        "android_client_info": {
+          "package_name": "com.alistairholmes.devjournal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "292098240850-a5aop3pckh45i2kcd2or8f1hvu8lon36.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alistairholmes.devjournal",
+            "certificate_hash": "de367035a02346ca14c24305c5574e6c1e3cf0ae"
+          }
+        },
+        {
+          "client_id": "292098240850-4nl4f2v087iblhvrn85hdp6b2r9esoad.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXFIjlymJ3jiCzniJJyoltQMdPhLLjkIc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "292098240850-4nl4f2v087iblhvrn85hdp6b2r9esoad.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
