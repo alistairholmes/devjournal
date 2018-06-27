@@ -126,7 +126,7 @@ public class JournalActivity extends AppCompatActivity implements JournalAdapter
         // Launch AddTaskActivity adding the itemId as an extra in the intent
         // COMPLETED (2) Launch AddTaskActivity with itemId as extra for the key AddTaskActivity.EXTRA_TASK_ID
         Intent intent = new Intent(JournalActivity.this, AddEntryActivity.class);
-        intent.putExtra(AddEntryActivity.EXTRA_TASK_ID, itemId);
+        intent.putExtra(AddEntryActivity.EXTRA_ENTRY_ID, itemId);
         startActivity(intent);
     }
 

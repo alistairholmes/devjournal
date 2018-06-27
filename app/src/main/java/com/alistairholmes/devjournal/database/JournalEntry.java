@@ -15,21 +15,20 @@ public class JournalEntry {
     private int id;
     private String title;
     private String description;
-    @ColumnInfo(name = "updated_at")
-    private Date updated_at;
+    private Date date;
 
     @Ignore
-    public JournalEntry(String title, String description, Date updated_at) {
+    public JournalEntry(String title, String description, Date date) {
         this.title = title;
         this.description = description;
-        this.updated_at = updated_at;
+        this.date = date;
     }
 
-    public JournalEntry(int id, String title, String description, Date updated_at) {
+    public JournalEntry(int id, String title, String description, Date date) {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.updated_at = updated_at;
+        this.date = date;
     }
 
     //Getters and Setters
@@ -50,11 +49,8 @@ public class JournalEntry {
         return description;
     }
 
-    public Date getUpdatedAt() {
-        return updated_at;
+    public Date getDate() {
+        return date;
     }
 
-    public void setUpdated_at(Date updated_at) {
-        this.updated_at = updated_at;
-    }
 }
