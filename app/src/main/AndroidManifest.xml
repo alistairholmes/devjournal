@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".BaseActivity" />
-        <activity android:name=".JournalActivity"></activity>
+        <activity android:name=".JournalActivity" />
+        <activity android:name=".AddEntryActivity"></activity>
     </application>
 
 </manifest>

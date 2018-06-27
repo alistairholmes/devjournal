@@ -65,7 +65,7 @@ public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.JournalV
         JournalEntry journalEntry = mJournalEntries.get(position);
         String description = journalEntry.getDescription();
         String title = journalEntry.getTitle();
-        String updatedAt = dateFormat.format(JournalEntry.getUpdatedAt());
+        String updatedAt = dateFormat.format(journalEntry.getUpdatedAt());
 
         //Set values
         holder.description_tv.setText(description);
