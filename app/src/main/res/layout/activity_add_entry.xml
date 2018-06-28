@@ -22,6 +22,16 @@
         android:hint="Add a title"
         android:paddingBottom="@dimen/activity_horizontal_margin" />
 
+    <!-- EditText for getEntrytask description input -->
+    <EditText
+        android:id="@+id/editTextEntryDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:hint="Start typing...."
+        android:paddingBottom="@dimen/activity_horizontal_margin" />
+
+
 
     <!-- Add button -->
     <Button

@@ -52,13 +52,13 @@ public class JournalActivity extends AppCompatActivity implements JournalAdapter
          An ItemTouchHelper enables touch behavior (like swipe and move) on each ViewHolder,
          and uses callbacks to signal when a user is performing these actions.
          */
-        /*new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
             public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
                 return false;
-            }*/
+            }
 
-/*            // Called when a user swipes left or right on a ViewHolder
+            // Called when a user swipes left or right on a ViewHolder
             @Override
             public void onSwiped(final RecyclerView.ViewHolder viewHolder, int swipeDir) {
                 // Here is where you'll implement swipe to delete
@@ -66,13 +66,13 @@ public class JournalActivity extends AppCompatActivity implements JournalAdapter
                     @Override
                     public void run() {
                         int position = viewHolder.getAdapterPosition();
-                        List<TaskEntry> tasks = mAdapter.getTasks();
-                        mDb.taskDao().deleteTask(tasks.get(position));
-                        retrieveTasks();
+                        List<JournalEntry> entries = mAdapter.getEntries();
+                        mDb.journalDao().deleteEntry(entries.get(position));
+                        retrieveEntries();
                     }
                 });
             }
-        }).attachToRecyclerView(mRecyclerView);*/
+        }).attachToRecyclerView(mRecyclerView);
 
         /*
          Set the Floating Action Button (FAB) to its corresponding View.

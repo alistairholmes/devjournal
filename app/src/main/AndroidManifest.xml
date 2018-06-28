@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".JournalActivity">
+        <activity android:name=".GoogleSignInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,8 +19,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".BaseActivity" />
-        <activity android:name=".GoogleSignInActivity" />
-        <activity android:name=".AddEntryActivity"></activity>
+        <activity android:name=".JournalActivity" />
+        <activity android:name=".AddEntryActivity" />
+        <activity android:name=".ViewEntryActivity"></activity>
     </application>
 
 </manifest>
