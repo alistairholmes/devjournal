@@ -5,6 +5,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingEnd="@dimen/activity_horizontal_margin"
@@ -13,9 +14,9 @@
     android:paddingStart="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
 
-    <!-- EditText for getEntrytask description input -->
+    <!-- EditText for Entrytask description input -->
     <EditText
-        android:id="@+id/editTextEntryTitle"
+        android:id="@+id/editTextTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="start"
@@ -32,16 +33,14 @@
         android:paddingBottom="@dimen/activity_horizontal_margin" />
 
 
-
-    <!-- Add button -->
-    <Button
-        android:id="@+id/saveButton"
-        style="@style/TextAppearance.AppCompat.Large"
-        android:layout_width="match_parent"
+    <!-- Floating action button that launches AddTaskActivity when clicked -->
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_update"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@color/colorPrimary"
-        android:text="Add"
-        android:textColor="@android:color/primary_text_dark" />
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:tint="@android:color/white"
+        app:srcCompat="@android:drawable/ic_menu_save" />
 
 </LinearLayout>

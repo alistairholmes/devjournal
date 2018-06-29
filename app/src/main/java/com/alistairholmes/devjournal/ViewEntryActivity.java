@@ -2,18 +2,17 @@ package com.alistairholmes.devjournal;
 
 import android.content.Intent;
 import android.os.Build;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
-import android.widget.EditText;
+import android.widget.TextView;
 
 import com.alistairholmes.devjournal.database.AppDatabase;
 import com.alistairholmes.devjournal.database.JournalEntry;
 
-import java.util.Date;
 
 public class ViewEntryActivity extends AppCompatActivity {
 
@@ -24,11 +23,10 @@ public class ViewEntryActivity extends AppCompatActivity {
     // Constant for default entry id to be used when not in update mode
     private static final int DEFAULT_ENTRY_ID = -1;
     // Constant for logging
-    private static final String TAG = AddEntryActivity.class.getSimpleName();
+    private static final String TAG = ViewEntryActivity.class.getSimpleName();
     // Fields for views
-    EditText titleEditText;
-    EditText descriptionEditText;
-    Button mButton;
+    TextView title;
+    TextView description;
 
     private int mEntryId = DEFAULT_ENTRY_ID;
 
@@ -42,11 +40,12 @@ public class ViewEntryActivity extends AppCompatActivity {
             window.setStatusBarColor(getResources().getColor(R.color.colorPrimary));
         }
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.gradient));
+        //actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.gradient));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_entry);
 
-        initViews();
+        title = findViewById(R.id.title_view_tv);
+        description = findViewById(R.id.description_view_tv);
 
         mDb = AppDatabase.getInstance(getApplicationContext());
 
@@ -56,7 +55,6 @@ public class ViewEntryActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         if (intent != null && intent.hasExtra(EXTRA_ENTRY_ID)) {
-            mButton.setText("Update");
             if (mEntryId == DEFAULT_ENTRY_ID) {
                 // populate the UI
                 // Assign the value of EXTRA_ENTRY_ID in the intent to mEntryId
@@ -70,7 +68,7 @@ public class ViewEntryActivity extends AppCompatActivity {
                         // Use the loadEntryById method to retrieve the entry with id mEntryId and
                         // assign its value to a final JournalEntry variable
                         final JournalEntry entry = mDb.journalDao().loadEntryById(mEntryId);
-                        // CCall the populateUI method with the retrieve entries
+                        // Call the populateUI method with the retrieve entries
                         // Remember to wrap it in a call to runOnUiThread
                         runOnUiThread(new Runnable() {
                             @Override
@@ -82,28 +80,28 @@ public class ViewEntryActivity extends AppCompatActivity {
                 });
             }
         }
+
+         /*
+         Set the Floating Action Button (FAB) to its corresponding View.
+         Attach an OnClickListener to it, so that when it's clicked, a new intent will be created
+         to launch the AddEntryActivity.
+         */
+        FloatingActionButton fabButton = findViewById(R.id.fab_edit);
+
+        fabButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Create a new intent to start an AddTaskActivity
+                Intent addEntryIntent = new Intent(ViewEntryActivity.this, AddEntryActivity.class);
+                startActivity(addEntryIntent);
+            }
+        });
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         outState.putInt(INSTANCE_ENTRY_ID, mEntryId);
         super.onSaveInstanceState(outState);
-    }
-
-    /**
-     * initViews is called from onCreate to init the member variable views
-     */
-    private void initViews() {
-        titleEditText = findViewById(R.id.editTextEntryTitle);
-        descriptionEditText = findViewById(R.id.editTextEntryDescription);
-
-        mButton = findViewById(R.id.saveButton);
-        mButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onSaveButtonClicked();
-            }
-        });
     }
 
     /**
@@ -118,38 +116,11 @@ public class ViewEntryActivity extends AppCompatActivity {
         }
 
         // use the variable task to populate the UI
-        titleEditText.setText(entry.getTitle());
-        descriptionEditText.setText(entry.getDescription());
+        title.setText(entry.getTitle());
+        description.setText(entry.getDescription());
 
     }
 
-    /**
-     * onSaveButtonClicked is called when the "save" button is clicked.
-     * It retrieves user input and inserts that new entry data into the underlying database.
-     */
-    public void onSaveButtonClicked() {
-        String title = titleEditText.getText().toString();
-        String description = descriptionEditText.getText().toString();
-        Date date = new Date();
 
 
-        final JournalEntry entry = new JournalEntry(title,description, date);
-        AppExecutors.getInstance().diskIO().execute(new Runnable() {
-            @Override
-            public void run() {
-                // insert the entry only if mEntryId matches DEFAULT_ENTRY_ID
-                // Otherwise update it
-                // call finish in any case
-                if (mEntryId == DEFAULT_ENTRY_ID) {
-                    // insert new task
-                    mDb.journalDao().insertEntry(entry);
-                } else {
-                    //update task
-                    entry.setId(mEntryId);
-                    mDb.journalDao().updateEntry(entry);
-                }
-                finish();
-            }
-        });
-    }
 }

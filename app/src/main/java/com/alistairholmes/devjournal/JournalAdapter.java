@@ -17,7 +17,7 @@ import java.util.Locale;
 public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.JournalViewHolder>{
 
     // Constant for date format
-    private static final String DATE_FORMAT_DAY = "dd MMM";
+    private static final String DATE_FORMAT_DAY = "dd";
     private static final String DATE_FORMAT_MONTH = "MMM";
 
 
@@ -75,7 +75,7 @@ public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.JournalV
         holder.title_tv.setText(title);
         holder.description_tv.setText(description);
         holder.updatedAt_tv.setText(updatedAt);
-//        holder.month_tv.setText(monthUpdate);
+        holder.month_tv.setText(monthUpdate);
 
     }
 
@@ -127,6 +127,7 @@ public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.JournalV
             description_tv = itemView.findViewById(R.id.entry_description);
             updatedAt_tv = itemView.findViewById(R.id.entry_day);
             title_tv = itemView.findViewById(R.id.entry_title);
+            month_tv = itemView.findViewById(R.id.entry_month);
             itemView.setOnClickListener(this);
         }
 

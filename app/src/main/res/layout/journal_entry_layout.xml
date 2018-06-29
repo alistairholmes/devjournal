@@ -19,6 +19,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
             android:id="@+id/entry_day"
             tools:text="26" />
 
@@ -26,6 +27,7 @@
             android:id="@+id/entry_month"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
             tools:text="Jun" />
 
     </LinearLayout>

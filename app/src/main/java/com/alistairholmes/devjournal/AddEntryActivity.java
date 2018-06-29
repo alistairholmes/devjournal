@@ -2,6 +2,7 @@ package com.alistairholmes.devjournal;
 
 import android.content.Intent;
 import android.os.Build;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,7 +30,7 @@ public class AddEntryActivity extends AppCompatActivity {
     // Fields for views
     EditText titleEditText;
     EditText descriptionEditText;
-    Button mButton;
+    FloatingActionButton fabButton;
 
     private int mEntryId = DEFAULT_ENTRY_ID;
 
@@ -43,7 +44,7 @@ public class AddEntryActivity extends AppCompatActivity {
             window.setStatusBarColor(getResources().getColor(R.color.colorPrimary));
         }
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.gradient));
+        //actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.gradient));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_entry);
 
@@ -57,7 +58,7 @@ public class AddEntryActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         if (intent != null && intent.hasExtra(EXTRA_ENTRY_ID)) {
-            mButton.setText("Update");
+
             if (mEntryId == DEFAULT_ENTRY_ID) {
                 // populate the UI
                 // Assign the value of EXTRA_ENTRY_ID in the intent to mEntryId
@@ -95,11 +96,11 @@ public class AddEntryActivity extends AppCompatActivity {
      * initViews is called from onCreate to init the member variable views
      */
     private void initViews() {
-        titleEditText = findViewById(R.id.editTextEntryTitle);
+        titleEditText = findViewById(R.id.editTextTitle);
         descriptionEditText = findViewById(R.id.editTextEntryDescription);
+        fabButton = findViewById(R.id.fab_update);
 
-        mButton = findViewById(R.id.saveButton);
-        mButton.setOnClickListener(new View.OnClickListener() {
+        fabButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onSaveButtonClicked();

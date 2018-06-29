@@ -3,7 +3,6 @@ package com.alistairholmes.devjournal;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
-import android.service.notification.StatusBarNotification;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -41,7 +40,7 @@ public class JournalActivity extends AppCompatActivity implements JournalAdapter
             window.setStatusBarColor(getResources().getColor(R.color.colorPrimary));
         }
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.gradient));
+        //actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.gradient));
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_journal);
@@ -90,7 +89,7 @@ public class JournalActivity extends AppCompatActivity implements JournalAdapter
         /*
          Set the Floating Action Button (FAB) to its corresponding View.
          Attach an OnClickListener to it, so that when it's clicked, a new intent will be created
-         to launch the AddTaskActivity.
+         to launch the AddEntryActivity.
          */
         FloatingActionButton fabButton = findViewById(R.id.fab);
 
