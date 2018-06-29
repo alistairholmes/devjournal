@@ -7,6 +7,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Remove action bar on Sign In Activity -->
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
     <!-- Activity with no Title -->
     <style name="ThemeOverlay.MyNoTitleActivity" parent="AppTheme">
         <item name="windowActionBar">false</item>

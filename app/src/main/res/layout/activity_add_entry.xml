@@ -15,7 +15,7 @@
 
     <!-- EditText for getEntrytask description input -->
     <EditText
-        android:id="@+id/editTextTaskDescription"
+        android:id="@+id/editTextEntryTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="start"

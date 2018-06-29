@@ -1,9 +1,12 @@
 package com.alistairholmes.devjournal;
 
 import android.content.Intent;
+import android.os.Build;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
@@ -24,7 +27,8 @@ public class AddEntryActivity extends AppCompatActivity {
     // Constant for logging
     private static final String TAG = AddEntryActivity.class.getSimpleName();
     // Fields for views
-    EditText mEditText;
+    EditText titleEditText;
+    EditText descriptionEditText;
     Button mButton;
 
     private int mEntryId = DEFAULT_ENTRY_ID;
@@ -33,6 +37,13 @@ public class AddEntryActivity extends AppCompatActivity {
     private AppDatabase mDb;
 
     protected void onCreate(Bundle savedInstanceState) {
+        //must be called before setContentView(...)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.setStatusBarColor(getResources().getColor(R.color.colorPrimary));
+        }
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.gradient));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_entry);
 
@@ -62,8 +73,6 @@ public class AddEntryActivity extends AppCompatActivity {
                         final JournalEntry entry = mDb.journalDao().loadEntryById(mEntryId);
                         // CCall the populateUI method with the retrieve entries
                         // Remember to wrap it in a call to runOnUiThread
-                        // We will be able to simplify this once we learn more
-                        // about Android Architecture Components
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -86,7 +95,8 @@ public class AddEntryActivity extends AppCompatActivity {
      * initViews is called from onCreate to init the member variable views
      */
     private void initViews() {
-        mEditText = findViewById(R.id.editTextTaskDescription);
+        titleEditText = findViewById(R.id.editTextEntryTitle);
+        descriptionEditText = findViewById(R.id.editTextEntryDescription);
 
         mButton = findViewById(R.id.saveButton);
         mButton.setOnClickListener(new View.OnClickListener() {
@@ -109,7 +119,8 @@ public class AddEntryActivity extends AppCompatActivity {
         }
 
         // use the variable task to populate the UI
-        mEditText.setText(entry.getDescription());
+        titleEditText.setText(entry.getTitle());
+        descriptionEditText.setText(entry.getDescription());
 
     }
 
@@ -118,8 +129,8 @@ public class AddEntryActivity extends AppCompatActivity {
      * It retrieves user input and inserts that new entry data into the underlying database.
      */
     public void onSaveButtonClicked() {
-        String title = mEditText.getText().toString();
-        String description = mEditText.getText().toString();
+        String title = titleEditText.getText().toString();
+        String description = descriptionEditText.getText().toString();
         Date date = new Date();
 
 

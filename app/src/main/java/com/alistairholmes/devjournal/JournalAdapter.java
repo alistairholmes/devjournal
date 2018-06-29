@@ -17,7 +17,9 @@ import java.util.Locale;
 public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.JournalViewHolder>{
 
     // Constant for date format
-    private static final String DATE_FORMAT = "dd/MM/yyy";
+    private static final String DATE_FORMAT_DAY = "dd MMM";
+    private static final String DATE_FORMAT_MONTH = "MMM";
+
 
     // Member variable to handle item clicks
     final private ItemClickListener mItemClickListener;
@@ -25,7 +27,8 @@ public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.JournalV
     private List<JournalEntry> mJournalEntries;
     private Context mContext;
     // Date formatter
-    private SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT, Locale.getDefault());
+    private SimpleDateFormat dayDateFormat = new SimpleDateFormat(DATE_FORMAT_DAY, Locale.getDefault());
+    private SimpleDateFormat monthDateFormat = new SimpleDateFormat(DATE_FORMAT_MONTH, Locale.getDefault());
 
     /**
      * Constructor for the JournalAdapter that initializes the Context.
@@ -65,11 +68,14 @@ public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.JournalV
         JournalEntry journalEntry = mJournalEntries.get(position);
         String description = journalEntry.getDescription();
         String title = journalEntry.getTitle();
-        String updatedAt = dateFormat.format(journalEntry.getDate());
+        String updatedAt = dayDateFormat.format(journalEntry.getDate());
+        String monthUpdate = monthDateFormat.format(journalEntry.getDate());
 
         //Set values
+        holder.title_tv.setText(title);
         holder.description_tv.setText(description);
         holder.updatedAt_tv.setText(updatedAt);
+//        holder.month_tv.setText(monthUpdate);
 
     }
 
@@ -108,6 +114,7 @@ public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.JournalV
         TextView description_tv;
         TextView updatedAt_tv;
         TextView title_tv;
+        TextView month_tv;
 
         /**
          * Constructor for the JournalViewHolders.

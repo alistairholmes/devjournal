@@ -2,7 +2,10 @@ package com.alistairholmes.devjournal;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
+import android.service.notification.StatusBarNotification;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -10,6 +13,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.alistairholmes.devjournal.database.AppDatabase;
 import com.alistairholmes.devjournal.database.JournalEntry;
@@ -30,6 +35,14 @@ public class JournalActivity extends AppCompatActivity implements JournalAdapter
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //must be called before setContentView(...)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.setStatusBarColor(getResources().getColor(R.color.colorPrimary));
+        }
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.gradient));
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_journal);
 
@@ -123,10 +136,10 @@ public class JournalActivity extends AppCompatActivity implements JournalAdapter
 
     @Override
     public void onItemClickListener(int itemId) {
-        // Launch AddTaskActivity adding the itemId as an extra in the intent
-        // COMPLETED (2) Launch AddTaskActivity with itemId as extra for the key AddTaskActivity.EXTRA_TASK_ID
-        Intent intent = new Intent(JournalActivity.this, AddEntryActivity.class);
-        intent.putExtra(AddEntryActivity.EXTRA_ENTRY_ID, itemId);
+        // Launch ViewEntryActivity adding the itemId as an extra in the intent
+        // Launch ViewEntryActivity with itemId as extra for the key ViewEntryActivity.EXTRA_TASK_ID
+        Intent intent = new Intent(JournalActivity.this, ViewEntryActivity.class);
+        intent.putExtra(ViewEntryActivity.EXTRA_ENTRY_ID, itemId);
         startActivity(intent);
     }
 

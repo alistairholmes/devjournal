@@ -12,16 +12,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GoogleSignInActivity">
+        <activity android:name=".GoogleSignInActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".BaseActivity" />
-        <activity android:name=".JournalActivity">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        </activity>
+        <activity android:name=".JournalActivity" />
         <activity android:name=".AddEntryActivity"
             tools:ignore="WrongManifestParent">
             <layout android:defaultHeight="500dp"
@@ -31,6 +30,11 @@
                 android:minWidth="300dp" />
         </activity>
         <activity android:name=".ViewEntryActivity"/>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+        android:resizeableActivity=["true"]
 
     </application>
                                                                                                                                                                                                                                                                                                                                                                                                                                             
