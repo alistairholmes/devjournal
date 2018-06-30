@@ -15,7 +15,11 @@
         android:layout_marginTop="16dp"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:fontFamily="@font/ubuntu_medium"
+        android:textColor="#8B8B8B"
+        />
+
 
     <TextView
         android:id="@+id/description_view_tv"
@@ -26,7 +30,10 @@
         android:layout_marginTop="24dp"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_view_tv" />
+        app:layout_constraintTop_toBottomOf="@+id/title_view_tv"
+        app:fontFamily="@font/ubuntu"
+        android:textColor="#8B8B8B"/>
+
 
     <!-- Floating action button that launches AddTaskActivity when clicked -->
     <android.support.design.widget.FloatingActionButton
@@ -40,6 +47,6 @@
         android:tint="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_edit" />
+        app:srcCompat="@drawable/baseline_create_white_18dp" />
 
 </android.support.constraint.ConstraintLayout>

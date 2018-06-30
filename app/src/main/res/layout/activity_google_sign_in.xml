@@ -11,7 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/colorAccent"
+        android:background="@drawable/gradient"
         android:layout_weight="3"
         android:gravity="center_horizontal"
         android:orientation="vertical">
@@ -32,6 +32,7 @@
             android:text="@string/google_title_text"
             android:textColor="#FFFFFF"
             android:theme="@style/ThemeOverlay.MyTitleText"
+            app:fontFamily="@font/ubuntu_medium"
              />
 
         <TextView
@@ -39,6 +40,7 @@
             style="@style/ThemeOverlay.MyTextDetail"
             android:text="@string/signed_out"
             android:textColor="#FFFFFF"
+            app:fontFamily="@font/ubuntu"
              />
 
         <TextView

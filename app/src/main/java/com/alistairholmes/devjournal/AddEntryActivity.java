@@ -119,7 +119,7 @@ public class AddEntryActivity extends AppCompatActivity {
             return;
         }
 
-        // use the variable task to populate the UI
+        // use the variable entry to populate the UI
         titleEditText.setText(entry.getTitle());
         descriptionEditText.setText(entry.getDescription());
 

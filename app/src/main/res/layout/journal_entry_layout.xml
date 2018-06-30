@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:paddingBottom="8dp"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -21,14 +22,16 @@
             android:layout_height="wrap_content"
             android:textColor="@color/colorAccent"
             android:id="@+id/entry_day"
-            tools:text="26" />
+            tools:text="26"
+            app:fontFamily="@font/ubuntu_medium"/>
 
         <TextView
             android:id="@+id/entry_month"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/colorAccent"
-            tools:text="Jun" />
+            tools:text="Jun"
+            app:fontFamily="@font/ubuntu_medium"/>
 
     </LinearLayout>
 
@@ -45,8 +48,9 @@
             style="@style/TextAppearance.AppCompat.Medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/primary_text_light"
-            tools:text="ALC Challenge 2.0 Day 2" />
+            android:textColor="#8B8B8B"
+            tools:text="ALC Challenge 2.0 Day 2"
+            app:fontFamily="@font/ubuntu_medium"/>
 
         <!-- TextView that displays the description -->
         <TextView
@@ -54,8 +58,11 @@
             style="@style/TextAppearance.AppCompat.Small"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/primary_text_light"
-            tools:text="Planning and designing" />
+            android:textColor="#8B8B8B"
+            tools:text="Planning and designing"
+            app:fontFamily="@font/ubuntu"
+            />
+
 
     </LinearLayout>
 

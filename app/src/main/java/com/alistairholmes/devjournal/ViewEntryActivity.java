@@ -1,5 +1,7 @@
 package com.alistairholmes.devjournal;
 
+
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.support.design.widget.FloatingActionButton;
@@ -7,6 +9,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.TextView;
 
@@ -40,7 +43,7 @@ public class ViewEntryActivity extends AppCompatActivity {
             window.setStatusBarColor(getResources().getColor(R.color.colorPrimary));
         }
         ActionBar actionBar = getSupportActionBar();
-        //actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.gradient));
+        actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.gradient));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_entry);
 
@@ -91,11 +94,15 @@ public class ViewEntryActivity extends AppCompatActivity {
         fabButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Create a new intent to start an AddTaskActivity
+            // Create a new intent to start an AddEntryActivity
+
                 Intent addEntryIntent = new Intent(ViewEntryActivity.this, AddEntryActivity.class);
+
                 startActivity(addEntryIntent);
             }
         });
+
+        mDb = AppDatabase.getInstance(getApplicationContext());
     }
 
     @Override
@@ -120,7 +127,5 @@ public class ViewEntryActivity extends AppCompatActivity {
         description.setText(entry.getDescription());
 
     }
-
-
 
 }

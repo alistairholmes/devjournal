@@ -40,7 +40,7 @@ public class JournalActivity extends AppCompatActivity implements JournalAdapter
             window.setStatusBarColor(getResources().getColor(R.color.colorPrimary));
         }
         ActionBar actionBar = getSupportActionBar();
-        //actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.gradient));
+        actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.gradient));
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_journal);
@@ -96,7 +96,7 @@ public class JournalActivity extends AppCompatActivity implements JournalAdapter
         fabButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Create a new intent to start an AddTaskActivity
+                // Create a new intent to start an AddEntryActivity
                 Intent addEntryIntent = new Intent(JournalActivity.this, AddEntryActivity.class);
                 startActivity(addEntryIntent);
             }
@@ -136,7 +136,7 @@ public class JournalActivity extends AppCompatActivity implements JournalAdapter
     @Override
     public void onItemClickListener(int itemId) {
         // Launch ViewEntryActivity adding the itemId as an extra in the intent
-        // Launch ViewEntryActivity with itemId as extra for the key ViewEntryActivity.EXTRA_TASK_ID
+        // Launch ViewEntryActivity with itemId as extra for the key ViewEntryActivity.EXTRA_ENTRY_ID
         Intent intent = new Intent(JournalActivity.this, ViewEntryActivity.class);
         intent.putExtra(ViewEntryActivity.EXTRA_ENTRY_ID, itemId);
         startActivity(intent);
