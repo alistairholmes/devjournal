@@ -31,6 +31,7 @@
 
 * [Firebase Google Samples](https://github.com/firebase/quickstart-android)
 * Udacity Android Architecture Components Tutorials
+* ALC and Fellow scholars for providing encouragment and assistance.
 
 # License
 
