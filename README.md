@@ -1,8 +1,8 @@
-# [Dev Journal]
+# Dev Journal
 
 <img src="https://github.com/b-lam/Resplash/blob/develop/design/Play%20Store/Resplash_Play_Store_Banner.jpg?raw=true" width="750">
 
-**[Dev Journal]** was made for the 7 days of code challenge for the ALC with Google Scholarship.
+**Dev Journal** was made for the 7 days of code challenge for the ALC with Google Scholarship.
 
 # Features
 
@@ -24,7 +24,7 @@
 # Developed By
 
 * Alistair Holmes 
- * [alistairholmes.com](alistairholmes.com)
+ * [alistairholmes.com]((http://www.alistairholmes.com)
  * [instagram.com/alistair.holmes](https://www.instagram.com/alistair.holmes/)
  
 # Credits
