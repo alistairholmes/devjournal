@@ -2,7 +2,7 @@
 
 <img src="https://user-images.githubusercontent.com/22801227/42134580-de690e68-7d3e-11e8-86e8-e2b708d30f24.png" width="750">
 
-**Dev Journal** was made for the 7 days of code challenge for the ALC with Google Scholarship.
+**Dev Journal** was made for the 7 days of code challenge for the first phase of the ALC with Google Scholarship.
 
 # Features
 
@@ -19,7 +19,7 @@
 
 # Screenshots
 
-<img src="https://user-images.githubusercontent.com/22801227/42132353-c3929aaa-7d16-11e8-814b-204ac14e841a.png" width="250"> <img src="https://user-images.githubusercontent.com/22801227/42132371-f0808202-7d16-11e8-80eb-5c31080a5635.png" width="250"> <img src="https://b-lam.github.io/img/resplash/resplash-3.png" width="250">
+<img src="https://user-images.githubusercontent.com/22801227/42132353-c3929aaa-7d16-11e8-814b-204ac14e841a.png" width="250"> <img src="https://user-images.githubusercontent.com/22801227/42132371-f0808202-7d16-11e8-80eb-5c31080a5635.png" width="250"> <img src="https://user-images.githubusercontent.com/22801227/42134637-2b6e799a-7d40-11e8-855a-3724b0a62f61.png" width="250">
 
 # Developed By
 
