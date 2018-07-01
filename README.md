@@ -24,7 +24,7 @@
 # Developed By
 
 * Alistair Holmes 
- * [alistairholmes.com]((http://www.alistairholmes.com)
+ * [alistairholmes.com](http://www.alistairholmes.com)
  * [instagram.com/alistair.holmes](https://www.instagram.com/alistair.holmes/)
  
 # Credits
