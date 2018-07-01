@@ -14,6 +14,7 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import com.alistairholmes.devjournal.database.AppDatabase;
 import com.alistairholmes.devjournal.database.JournalEntry;
@@ -26,9 +27,11 @@ public class JournalActivity extends AppCompatActivity implements JournalAdapter
 
     // Constant for logging
     private static final String TAG = JournalActivity.class.getSimpleName();
+
     // Member variables for the adapter and RecyclerView
     private RecyclerView mRecyclerView;
     private JournalAdapter mAdapter;
+
 
     private AppDatabase mDb;
 
@@ -44,6 +47,7 @@ public class JournalActivity extends AppCompatActivity implements JournalAdapter
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_journal);
+
 
         // Set the RecyclerView to its corresponding view
         mRecyclerView = findViewById(R.id.recyclerView_journalEntries);

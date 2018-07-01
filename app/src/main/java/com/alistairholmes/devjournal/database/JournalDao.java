@@ -12,7 +12,7 @@ import java.util.List;
 @Dao
 public interface JournalDao {
 
-    @Query("SELECT * FROM `Journal Entries`")
+    @Query("SELECT * FROM `Journal Entries` ORDER BY date DESC ")
     List<JournalEntry> loadAllEntries();
 
     @Insert
