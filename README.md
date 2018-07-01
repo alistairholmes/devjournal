@@ -1,8 +1,8 @@
 # Dev Journal
 
-<img src="https://github.com/b-lam/Resplash/blob/develop/design/Play%20Store/Resplash_Play_Store_Banner.jpg?raw=true" width="750">
+<img src="https://user-images.githubusercontent.com/22801227/42134580-de690e68-7d3e-11e8-86e8-e2b708d30f24.png" width="750">
 
-**Dev Journal** was made for the 7 days of code challenge for the ALC with Google Scholarship.
+**Dev Journal** was made for the 7 days of code challenge for the first phase of the ALC with Google Scholarship.
 
 # Features
 
@@ -10,16 +10,17 @@
 * Add / View / Modify Journal entries
 * Swipe to Delete
 * Database Persistence with [Room](https://developer.android.com/topic/libraries/architecture/room)
+* Split-Screen / Multi-window support for easy copy/paste from other apps.
 * Unique Design
 
 # Download
 
-<a href="https://play.google.com/store/apps/details?id=com.b_lam.resplash" target="_blank">
+<a href="https://play.google.com/store/apps/details?id=com.alistairholmes.devjournal" target="_blank">
 <img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Google Play" height="70"/></a>
 
 # Screenshots
 
-<img src="https://user-images.githubusercontent.com/22801227/42132353-c3929aaa-7d16-11e8-814b-204ac14e841a.png" width="250"> <img src="https://user-images.githubusercontent.com/22801227/42132371-f0808202-7d16-11e8-80eb-5c31080a5635.png" width="250"> <img src="https://b-lam.github.io/img/resplash/resplash-3.png" width="250">
+<img src="https://user-images.githubusercontent.com/22801227/42134637-2b6e799a-7d40-11e8-855a-3724b0a62f61.png" width="250"> <img src="https://user-images.githubusercontent.com/22801227/42132353-c3929aaa-7d16-11e8-814b-204ac14e841a.png" width="250"> <img src="https://user-images.githubusercontent.com/22801227/42132371-f0808202-7d16-11e8-80eb-5c31080a5635.png" width="250"> 
 
 # Developed By
 
@@ -31,6 +32,7 @@
 
 * [Firebase Google Samples](https://github.com/firebase/quickstart-android)
 * Udacity Android Architecture Components Tutorials
+* ALC and Fellow scholars for providing encouragment and assistance.
 
 # License
 
@@ -56,4 +58,4 @@
 	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 	SOFTWARE.
 
- [Resplash]:https://play.google.com/store/apps/details?id=com.b_lam.resplash
+ [Dev Journal]:https://play.google.com/store/apps/details?id=com.alistairholmes.devjournal
