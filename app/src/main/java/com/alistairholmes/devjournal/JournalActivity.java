@@ -52,12 +52,15 @@ public class JournalActivity extends AppCompatActivity implements JournalAdapter
         // positions items within a RecyclerView into a linear list
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+
         // Initialize the adapter and attach it to the RecyclerView
         mAdapter = new JournalAdapter(this, this);
         mRecyclerView.setAdapter(mAdapter);
 
-        DividerItemDecoration decoration = new DividerItemDecoration(getApplicationContext(), VERTICAL);
+        DividerItemDecoration decoration = new DividerItemDecoration(mRecyclerView.getContext(),
+                VERTICAL);
         mRecyclerView.addItemDecoration(decoration);
+
 
         /*
          Add a touch helper to the RecyclerView to recognize when a user swipes to delete an item.
@@ -137,9 +140,10 @@ public class JournalActivity extends AppCompatActivity implements JournalAdapter
     public void onItemClickListener(int itemId) {
         // Launch ViewEntryActivity adding the itemId as an extra in the intent
         // Launch ViewEntryActivity with itemId as extra for the key ViewEntryActivity.EXTRA_ENTRY_ID
-        Intent intent = new Intent(JournalActivity.this, ViewEntryActivity.class);
-        intent.putExtra(ViewEntryActivity.EXTRA_ENTRY_ID, itemId);
+        Intent intent = new Intent(JournalActivity.this, AddEntryActivity.class);
+        intent.putExtra(AddEntryActivity.EXTRA_ENTRY_ID, itemId);
         startActivity(intent);
     }
+
 
 }

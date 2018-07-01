@@ -94,11 +94,14 @@ public class ViewEntryActivity extends AppCompatActivity {
         fabButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = getIntent();
+                    Boolean noteId = intent.hasExtra(EXTRA_ENTRY_ID);
+                    Intent addEntryIntent = new Intent(ViewEntryActivity.this, AddEntryActivity.class);
+                    addEntryIntent.putExtra(AddEntryActivity.EXTRA_ENTRY_ID, noteId);
+                    startActivity(addEntryIntent);
+
             // Create a new intent to start an AddEntryActivity
 
-                Intent addEntryIntent = new Intent(ViewEntryActivity.this, AddEntryActivity.class);
-
-                startActivity(addEntryIntent);
             }
         });
 
@@ -127,5 +130,6 @@ public class ViewEntryActivity extends AppCompatActivity {
         description.setText(entry.getDescription());
 
     }
+
 
 }

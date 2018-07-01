@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     android:background="#FFFF"
     android:orientation="vertical"
-    android:weightSum="4">
+    android:weightSum="5">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@drawable/gradient"
-        android:layout_weight="3"
+        android:layout_weight="3.5"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/title_bottom_margin"
-            android:text="@string/google_title_text"
+            android:text="Jott Down Your Dev Life"
             android:textColor="#FFFFFF"
             android:theme="@style/ThemeOverlay.MyTitleText"
             app:fontFamily="@font/ubuntu_medium"
@@ -38,7 +38,7 @@
         <TextView
             android:id="@+id/status"
             style="@style/ThemeOverlay.MyTextDetail"
-            android:text="@string/signed_out"
+            android:text="Ideas, Notes, Todo's, Bugs"
             android:textColor="#FFFFFF"
             app:fontFamily="@font/ubuntu"
              />
@@ -54,7 +54,7 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="1.5"
         android:background="#FFFFFF">
 
         <com.google.android.gms.common.SignInButton
@@ -82,7 +82,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/sign_out"
+
                 android:theme="@style/ThemeOverlay.MyDarkButton" />
 
             <Button

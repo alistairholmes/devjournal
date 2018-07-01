@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?><!-- This linear layout contains a single item displayed in the JournalActivity -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
-    android:paddingBottom="8dp"
     android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="8dp"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="8dp"
     tools:context="com.alistairholmes.devjournal.JournalActivity">
 
     <LinearLayout
@@ -18,20 +18,24 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/entry_day"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="2dp"
             android:textColor="@color/colorAccent"
-            android:id="@+id/entry_day"
-            tools:text="26"
-            app:fontFamily="@font/ubuntu_medium"/>
+            android:textSize="20sp"
+            app:fontFamily="@font/ubuntu_bold"
+            tools:text="26" />
 
         <TextView
             android:id="@+id/entry_month"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/colorAccent"
-            tools:text="Jun"
-            app:fontFamily="@font/ubuntu_medium"/>
+            android:textSize="16sp"
+            app:fontFamily="@font/ubuntu_bold"
+            tools:text="Jun" />
 
     </LinearLayout>
 
@@ -48,9 +52,13 @@
             style="@style/TextAppearance.AppCompat.Medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:ellipsize="end"
+            android:maxLength="20"
+            android:maxLines="1"
             android:textColor="#8B8B8B"
-            tools:text="ALC Challenge 2.0 Day 2"
-            app:fontFamily="@font/ubuntu_medium"/>
+            app:fontFamily="@font/ubuntu_medium"
+            tools:text="ALC Challenge 2.0 Day 2" />
 
         <!-- TextView that displays the description -->
         <TextView
@@ -58,10 +66,12 @@
             style="@style/TextAppearance.AppCompat.Small"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLength="70"
+            android:maxLines="2"
             android:textColor="#8B8B8B"
-            tools:text="Planning and designing"
             app:fontFamily="@font/ubuntu"
-            />
+            tools:text="Planning and designing" />
 
 
     </LinearLayout>

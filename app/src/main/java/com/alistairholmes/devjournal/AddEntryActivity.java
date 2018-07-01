@@ -44,7 +44,7 @@ public class AddEntryActivity extends AppCompatActivity {
             window.setStatusBarColor(getResources().getColor(R.color.colorPrimary));
         }
         ActionBar actionBar = getSupportActionBar();
-        //actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.gradient));
+        actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.gradient));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_entry);
 

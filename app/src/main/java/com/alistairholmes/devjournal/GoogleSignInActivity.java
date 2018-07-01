@@ -182,7 +182,7 @@ public class GoogleSignInActivity extends BaseActivity implements
         if (user != null) {
             startActivity(new Intent(this,JournalActivity.class));
         } else {
-            mStatusTextView.setText(R.string.signed_out);
+            mStatusTextView.setText("Ideas, Notes, Todo's, Bugs");
             mDetailTextView.setText(null);
 
             findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
