@@ -10,6 +10,7 @@
 * Add / View / Modify Journal entries
 * Swipe to Delete
 * Database Persistence with [Room](https://developer.android.com/topic/libraries/architecture/room)
+* Split-Screen / Multi-window support for easy copy/paste from other apps.
 * Unique Design
 
 # Download
