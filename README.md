@@ -15,7 +15,7 @@
 
 # Download
 
-<a href="https://play.google.com/store/apps/details?id=com.b_lam.resplash" target="_blank">
+<a href="https://play.google.com/store/apps/details?id=com.alistairholmes.devjournal" target="_blank">
 <img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Google Play" height="70"/></a>
 
 # Screenshots
@@ -58,4 +58,4 @@
 	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 	SOFTWARE.
 
- [Resplash]:https://play.google.com/store/apps/details?id=com.b_lam.resplash
+ [Dev Journal]:https://play.google.com/store/apps/details?id=com.alistairholmes.devjournal
