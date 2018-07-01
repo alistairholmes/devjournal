@@ -1,6 +1,6 @@
 # Dev Journal
 
-<img src="https://github.com/b-lam/Resplash/blob/develop/design/Play%20Store/Resplash_Play_Store_Banner.jpg?raw=true" width="750">
+<img src="https://user-images.githubusercontent.com/22801227/42134580-de690e68-7d3e-11e8-86e8-e2b708d30f24.png" width="750">
 
 **Dev Journal** was made for the 7 days of code challenge for the ALC with Google Scholarship.
 
