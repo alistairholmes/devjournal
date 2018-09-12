@@ -18,7 +18,6 @@
 <a href="https://play.google.com/store/apps/details?id=com.alistairholmes.devjournal" target="_blank">
 <img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Google Play" height="70"/></a> 
 
-* [Download the APK](https://drive.google.com/file/d/1mVv-_dN_37fPLB04hId9LaoRb4iey6nl/view?usp=sharing)
 
 # Screenshots
 
