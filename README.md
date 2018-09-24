@@ -1,4 +1,5 @@
 # Dev Journal
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b3ff4806fb3443b687ec694fb13608e5)](https://www.codacy.com/app/alistairholmes95/devjournal?utm_source=alistair_holmes@bitbucket.org&amp;utm_medium=referral&amp;utm_content=alistair_holmes/devjournal&amp;utm_campaign=Badge_Grade)
 
 <img src="https://user-images.githubusercontent.com/22801227/42134580-de690e68-7d3e-11e8-86e8-e2b708d30f24.png" width="750">
 
