@@ -23,6 +23,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.instabug.library.Instabug;
+import com.instabug.library.invocation.InstabugInvocationEvent;
 
 /**
  * Demonstrate Firebase Authentication using a Google ID Token.
@@ -53,6 +55,12 @@ public class GoogleSignInActivity extends BaseActivity implements
             w.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         }
         setContentView(R.layout.activity_google_sign_in);
+
+        //initialing instabug
+        new Instabug.Builder(getApplication(), "YOUR_TOKEN",InstabugInvocationEvent.SHAKE)
+                .setInvocationEvents(InstabugInvocationEvent.SHAKE, InstabugInvocationEvent.SCREENSHOT_GESTURE,
+                        InstabugInvocationEvent.FLOATING_BUTTON, InstabugInvocationEvent.TWO_FINGER_SWIPE_LEFT)
+                .build();
 
         // Views
         mStatusTextView = findViewById(R.id.status);
