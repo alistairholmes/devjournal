@@ -15,6 +15,8 @@ import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.hamcrest.TypeSafeMatcher;
 
+// Testing for values in a recycle view can get complicated, this class is a matcher class that assists us with getting a particular view
+// https://github.com/dannyroa/espresso-samples/tree/master/RecyclerView/app/src/androidTest/java/com/dannyroa/espresso_samples/recyclerview
 public class RecyclerViewMatcher {
     private final int recyclerViewId;
 

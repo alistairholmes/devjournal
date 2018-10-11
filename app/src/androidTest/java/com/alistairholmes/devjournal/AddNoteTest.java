@@ -15,7 +15,6 @@ import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.ViewMatchers.hasDescendant;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
@@ -31,6 +30,7 @@ public class AddNoteTest {
     @Test
     public void addNewNote() {
         String noteTitle = "Test Note " + System.currentTimeMillis();
+        noteTitle = noteTitle.substring(0, 19); // max length of title is 20
         String noteDescription = "Test Description " + System.currentTimeMillis();
 
         // Opens AddEntryActivity
@@ -42,7 +42,9 @@ public class AddNoteTest {
         onView(withId(R.id.fab_update)).perform(click());
 
        onView(withRecyclerView(R.id.recyclerView_journalEntries).atPositionOnView(0, R.id.entry_title))
-               .check(matches(hasDescendant(withText(noteTitle))));
+               .check(matches(withText(noteTitle)));
+        onView(withRecyclerView(R.id.recyclerView_journalEntries).atPositionOnView(0, R.id.entry_description))
+                .check(matches(withText(noteDescription)));
     }
 
     public static RecyclerViewMatcher withRecyclerView(final int recyclerViewId) {
