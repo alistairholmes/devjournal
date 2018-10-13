@@ -11,7 +11,7 @@ public class InstabugClass extends Application {
     public void onCreate() {
         super.onCreate();
         //initialing instabug
-        new Instabug.Builder(this,"b38656bc256ef220cffbc4f47218bbd9")
+        new Instabug.Builder(this,"YOUR_API_KEY")
                 .setInvocationEvents(InstabugInvocationEvent.SHAKE, InstabugInvocationEvent.SCREENSHOT_GESTURE,
                         InstabugInvocationEvent.FLOATING_BUTTON, InstabugInvocationEvent.TWO_FINGER_SWIPE_LEFT)
                 .build();
