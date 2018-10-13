@@ -25,7 +25,7 @@ import java.util.List;
 
 import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
-public class JournalActivity extends AppCompatActivity implements JournalAdapter.ItemClickListener{
+public class JournalActivity extends AppCompatActivity implements JournalAdapter.ItemClickListener {
 
     // Constant for logging
     private static final String TAG = JournalActivity.class.getSimpleName();
@@ -49,12 +49,6 @@ public class JournalActivity extends AppCompatActivity implements JournalAdapter
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_journal);
-
-        //initialing instabug
-        new Instabug.Builder(getApplication(), "YOUR_TOKEN",InstabugInvocationEvent.SHAKE)
-                .setInvocationEvents(InstabugInvocationEvent.SHAKE, InstabugInvocationEvent.SCREENSHOT_GESTURE,
-                        InstabugInvocationEvent.FLOATING_BUTTON, InstabugInvocationEvent.TWO_FINGER_SWIPE_LEFT)
-                .build();
 
         // Set the RecyclerView to its corresponding view
         mRecyclerView = findViewById(R.id.recyclerView_journalEntries);

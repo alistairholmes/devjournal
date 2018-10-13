@@ -56,12 +56,6 @@ public class GoogleSignInActivity extends BaseActivity implements
         }
         setContentView(R.layout.activity_google_sign_in);
 
-        //initialing instabug
-        new Instabug.Builder(getApplication(), "YOUR_TOKEN",InstabugInvocationEvent.SHAKE)
-                .setInvocationEvents(InstabugInvocationEvent.SHAKE, InstabugInvocationEvent.SCREENSHOT_GESTURE,
-                        InstabugInvocationEvent.FLOATING_BUTTON, InstabugInvocationEvent.TWO_FINGER_SWIPE_LEFT)
-                .build();
-
         // Views
         mStatusTextView = findViewById(R.id.status);
         mDetailTextView = findViewById(R.id.detail);
