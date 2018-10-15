@@ -14,6 +14,7 @@
 * Database Persistence with [Room](https://developer.android.com/topic/libraries/architecture/room)
 * Split-Screen / Multi-window support for easy copy/paste from other apps.
 * Unique Design
+* The application now supports the French language.
 
 # Download
 
