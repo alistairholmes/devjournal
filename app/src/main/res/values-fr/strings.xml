@@ -1,0 +1,87 @@
+<resources>
+    <string name="app_name">Dev Journal</string>
+
+    <string name="label_google_sign_in">Connexion Firebase + Google</string>
+    <string name="desc_google_sign_in">Utilisez un identifiant Google pour vous authentifier auprès de Firebase.</string>
+
+    <string name="label_facebook_login">Connexion Firebase + Facebook</string>
+    <string name="desc_facebook_login">Utilisez un identifiant Facebook pour vous authentifier auprès de Firebase.</string>
+
+    <string name="label_twitter_login">Connexion Firebase + Twitter</string>
+    <string name="desc_twitter_login">Utilisez un identifiant Twitter pour vous authentifier auprès de Firebase.</string>
+
+    <string name="label_emailpassword">Authentification Email/Mot de passe</string>
+    <string name="desc_emailpassword">Utilisez un Email et un mot de passe pour vous authentifier auprès de Firebase.</string>
+
+    <string name="label_passwordless">Authentification sans mot de passe</string>
+    <string name="desc_passwordless">Utilisez un Email seulement pour vous authentifier auprès de Firebase.</string>
+
+    <string name="label_phone_auth">Authentification par numéro de téléphone</string>
+    <string name="desc_phone_auth">Utilisez un numéro de téléphone pour vous authentifier auprès de Firebase.</string>
+
+    <string name="label_anonymous_auth">Authentification anonyme</string>
+    <string name="desc_anonymous_auth">Connectez-vous anonymement puis effectuez une mise à niveau ultérieure vers Firebase.</string>
+
+    <string name="label_custom_auth">Authentification personnalisée</string>
+    <string name="desc_custom_auth">Utilisez un jeton personnalisé signé par votre propre serveur pour vous authentifier auprès de Firebase.</string>
+
+    <string name="label_firebase_ui">Authentification FirebaseUI</string>
+    <string name="desc_firebase_ui">Utilisez la bibliothèque FirebaseUI-Android pour vous authentifier auprès de Firebase.</string>
+
+    <string name="hint_user_id">Identifiant de l\'utilisateur</string>
+    <string name="get_custom_token">Obtenir un jeton</string>
+    <string name="sign_in">Se connecter</string>
+    <string name="create_account">Créer un compte</string>
+    <string name="send_link">Envoyer le lien</string>
+    <string name="sign_out">Se déconnecter</string>
+    <string name="verify_email">Vérifier l\'email</string>
+    <string name="disconnect">Déconnecter</string>
+    <string name="loading">Chargement…</string>
+    <string name="custom_token">Jeton personnalisé</string>
+    <string name="signed_in">Connecté</string>
+    <string name="signed_out">Déconnecté</string>
+    <string name="token_null">Jeton: nul</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Mot de passe</string>
+    <string name="desc_firebase_lockup">Logo et nom Firebase</string>
+    <string name="auth_failed">Authentification échouée</string>
+    <string name="start_phone_auth">Commencer</string>
+    <string name="verify_phone_auth">Vérifier</string>
+    <string name="resend_phone_auth">Renvoyer</string>
+    <string name="hint_phone_number">Numéro de téléphone</string>
+    <string name="hint_verification_code">Code de vérification</string>
+    <string name="status_code_sent">Code envoyé</string>
+    <string name="status_verification_failed">Vérification échouée</string>
+    <string name="status_verification_succeeded">Verification réussie</string>
+    <string name="status_sign_in_failed">Connexion échouée</string>
+    <string name="instant_validation">(validation instantanée)</string>
+
+    <string name="firebase_status_fmt">Utilisateur Firebase: %s</string>
+    <string name="firebase_user_management">Gestion des utilisateurs Firebase</string>
+
+    <string name="google_status_fmt">Utilisateur Google: %s</string>
+    <string name="google_title_text">Connexion Google</string>
+
+    <string name="facebook_status_fmt">Utilisateur Facebook: %s</string>
+    <string name="facebook_title_text">Connexion Facebook</string>
+
+    <string name="emailpassword_status_fmt">Utilisateur Email: %1$s (verifié: %2$b)</string>
+    <string name="emailpassword_title_text">Email et mot de passe</string>
+
+    <string name="passwordless_status_fmt">Utilisateur Email: %1$s (verifié: %2$b)</string>
+    <string name="passwordless_title_text">Connexion sans mot de passe</string>
+    <string name="status_email_not_sent">Envoyer le lien à votre Email pour commencer.</string>
+    <string name="status_email_sent">Lien envoyé, vérifiez votre émail pour continuer.</string>
+    <string name="status_link_found">Lien reçu, entrez l\'Email pour vous connecter.</string>
+
+    <string name="phone_title_text">Numéro de téléphone</string>
+
+    <string name="twitter_status_fmt">Utilisateur Twitter: %s</string>
+    <string name="twitter_title_text">Connexion Twitter</string>
+
+    <string name="firebaseui_status_fmt">Utilisateur Firebase: %s</string>
+    <string name="firebaseui_title_text">Authentification FirebaseUI</string>
+
+    <string name="id_fmt">Identifiant: %s</string>
+    <string name="email_fmt">Email: %s</string>
+</resources>
