@@ -2,6 +2,7 @@ package com.alistairholmes.devjournal;
 
 import android.arch.core.executor.testing.InstantTaskExecutorRule;
 import android.arch.persistence.room.Room;
+import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -21,6 +22,10 @@ import static junit.framework.TestCase.assertTrue;
 
 @RunWith(AndroidJUnit4.class)
 public class JournalDaoTest {
+
+    private static final String FAKE_TITLE = "JUnit Insertion Test";
+    private static final String FAKE_DESCRIPTION = "This is a test!!!";
+
 
     // InstantTaskExecutorRule is a JUnit Test Rule that swaps the background executor used by the
     // Architecture Components with a different one which executes each task synchronously.
@@ -57,6 +62,16 @@ public class JournalDaoTest {
         List<JournalEntry> journalEntryList = mJournalDao.loadAllEntries();
         assertTrue(journalEntryList.isEmpty());
     }
+
+    /*@Test
+    public void onInsertingNote_checkIf_RowIsCorrect() throws Exception {
+        JournalEntry journalEntry =
+        something = journalEntry.getTitle();
+        assertTrue(something)
+
+        mJournalDao.insertEntry();
+        List<JournalEntry> entryTitle = mJournalDao.loadEntryById()
+    }*/
 
 
 }

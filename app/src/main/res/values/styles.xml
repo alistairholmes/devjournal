@@ -7,10 +7,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <!-- Remove action bar on Sign In Activity -->
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
+    <!-- Make Login Full Screen -->
+    <style name="LoginTheme">
         <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
     </style>
 
     <!-- Activity with no Title -->

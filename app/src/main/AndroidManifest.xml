@@ -12,28 +12,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name=".BaseActivity" />
-        <activity android:name=".JournalActivity">
+        <activity android:name=".LoginActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddEntryActivity"
+        <activity
+            android:name=".AddEntryActivity"
             tools:ignore="WrongManifestParent">
-            <layout android:defaultHeight="500dp"
+            <layout
                 android:defaultWidth="600dp"
+                android:defaultHeight="500dp"
                 android:gravity="top|end"
-                android:minHeight="450dp"
-                android:minWidth="300dp" />
+                android:minWidth="300dp"
+                android:minHeight="450dp" />
         </activity>
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
         android:resizeableActivity=["true"]
-
+        <activity android:name=".JournalActivity">
+        </activity>
     </application>
 
 </manifest>
