@@ -127,11 +127,13 @@ public class SignUpActivity extends BaseActivity implements
 
         if (i == R.id.emailCreateAccountButton) {
             createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
-        } else if (i == R.id.tv_sign_in) {
-            Intent signInIntent = new Intent(SignUpActivity.this, LoginActivity.class);
-            startActivity(signInIntent);
         }
 
+    }
+
+    public void openSignInActivity(View view) {
+        Intent signInIntent = new Intent(SignUpActivity.this, LoginActivity.class);
+        startActivity(signInIntent);
     }
 }
 

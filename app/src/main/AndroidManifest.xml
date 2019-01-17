@@ -19,11 +19,6 @@
         android:theme="@style/AppTheme">
         <activity android:name=".BaseActivity" />
         <activity android:name=".LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".AddEntryActivity"
@@ -40,8 +35,17 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
         android:resizeableActivity=["true"]
-        <activity android:name=".JournalActivity" />
-        <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".JournalActivity">
+
+        </activity>
+        <activity android:name=".SignUpActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>/>
+        </activity>
+
     </application>
 
 </manifest>
