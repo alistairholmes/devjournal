@@ -1,4 +1,4 @@
-package com.alistairholmes.devjournal;
+package com.alistairholmes.devjournal.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,11 +12,21 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+
+import com.alistairholmes.devjournal.AddEntryActivity;
+import com.alistairholmes.devjournal.AppExecutors;
+import com.alistairholmes.devjournal.JournalAdapter;
+import com.alistairholmes.devjournal.R;
 import com.alistairholmes.devjournal.database.AppDatabase;
 import com.alistairholmes.devjournal.database.JournalEntry;
 
@@ -24,14 +34,14 @@ import java.util.List;
 
 import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
-public class JournalActivity extends AppCompatActivity implements JournalAdapter.ItemClickListener{
+public class JournalActivity extends AppCompatActivity implements com.alistairholmes.devjournal.JournalAdapter.ItemClickListener{
 
     // Constant for logging
     private static final String TAG = JournalActivity.class.getSimpleName();
 
     // Member variables for the adapter and RecyclerView
     private RecyclerView mRecyclerView;
-    private JournalAdapter mAdapter;
+    private com.alistairholmes.devjournal.JournalAdapter mAdapter;
 
     private AppDatabase mDb;
 
@@ -124,21 +134,20 @@ public class JournalActivity extends AppCompatActivity implements JournalAdapter
     }
 
     private void retrieveEntries() {
-        AppExecutors.getInstance().diskIO().execute(new Runnable() {
-            @Override
-            public void run() {
-                final List<JournalEntry> entries = mDb.journalDao().loadAllEntries();
+
+        Log.d(TAG, "Actively retrieving the tasks from the DataBase");
+
+                final LiveData<List<JournalEntry>> entries = mDb.journalDao().loadAllEntries();
                 // We will be able to simplify this once we learn more
                 // about Android Architecture Components
-                runOnUiThread(new Runnable() {
+                entries.observe((LifecycleOwner) this, new Observer<List<JournalEntry>>() {
                     @Override
-                    public void run() {
-                        mAdapter.setEntries(entries);
+                    public void onChanged(@Nullable List<JournalEntry> journalEntries) {
+                        mAdapter.setEntries(journalEntries);
                     }
                 });
             }
-        });
-    }
+
 
     @Override
     public void onItemClickListener(int itemId) {

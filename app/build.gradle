@@ -39,11 +39,15 @@ dependencies {
     //FAB dependencies
     implementation 'com.android.support:design:27.1.1'
 
-    //Room Dependencies
-    def room_version = "1.1.1"
+    //LiveData and View Model
+    def lifecycle_version = "2.0.0"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
 
-    implementation "android.arch.persistence.room:runtime:$room_version"
-    annotationProcessor "android.arch.persistence.room:compiler:$room_version"
+    //Room Dependencies
+    def room_version = "2.1.0-alpha03"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
 
     //Firebase Dependencies
     implementation 'com.google.firebase:firebase-auth:16.0.5'
