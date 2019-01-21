@@ -28,5 +28,5 @@ public interface JournalDao {
     // Create a Query method named loadEntryById that receives an int id and returns a JournalEntry Object
     // The query for this method should get all the data for that id in the task table
     @Query("SELECT * FROM `Journal Entries` WHERE id = :id")
-    JournalEntry loadEntryById(int id);
+    LiveData<JournalEntry> loadEntryById(int id);
 }

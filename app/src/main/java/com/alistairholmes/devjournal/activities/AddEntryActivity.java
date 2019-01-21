@@ -6,11 +6,16 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 
 import com.alistairholmes.devjournal.database.AppDatabase;
 import com.alistairholmes.devjournal.database.JournalEntry;
@@ -61,29 +66,17 @@ public class AddEntryActivity extends AppCompatActivity {
 
             if (mEntryId == DEFAULT_ENTRY_ID) {
                 // populate the UI
-                // Assign the value of EXTRA_ENTRY_ID in the intent to mEntryId
-                // Use DEFAULT_ENTRY_ID as the default
                 mEntryId = intent.getIntExtra(EXTRA_ENTRY_ID, DEFAULT_ENTRY_ID);
-                // Get the diskIO Executor from the instance of AppExecutors and
-                // call the diskIO execute method with a new Runnable and implement its run method
-                AppExecutors.getInstance().diskIO().execute(new Runnable() {
+                final LiveData<JournalEntry> entry = mDb.journalDao().loadEntryById(mEntryId);
+                entry.observe((LifecycleOwner) this, new Observer<JournalEntry>() {
                     @Override
-                    public void run() {
-                        // Use the loadEntryById method to retrieve the entry with id mEntryId and
-                        // assign its value to a final JournalEntry variable
-                        final JournalEntry entry = mDb.journalDao().loadEntryById(mEntryId);
-                        // CCall the populateUI method with the retrieve entries
-                        // Remember to wrap it in a call to runOnUiThread
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                populateUI(entry);
-                            }
-                        });
+                    public void onChanged(JournalEntry journalEntry) {
+                        Log.d(TAG, "Receiving update from LiveData.");
+                        populateUI(journalEntry);
                     }
                 });
             }
-        }
+            }
     }
 
     @Override
@@ -136,7 +129,7 @@ public class AddEntryActivity extends AppCompatActivity {
 
 
         final JournalEntry entry = new JournalEntry(title,description, date);
-        AppExecutors.getInstance().diskIO().execute(new Runnable() {
+        com.alistairholmes.devjournal.AppExecutors.getInstance().diskIO().execute(new Runnable() {
             @Override
             public void run() {
                 // insert the entry only if mEntryId matches DEFAULT_ENTRY_ID

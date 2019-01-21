@@ -97,7 +97,6 @@ public class JournalActivity extends AppCompatActivity implements com.alistairho
                         int position = viewHolder.getAdapterPosition();
                         List<JournalEntry> entries = mAdapter.getEntries();
                         mDb.journalDao().deleteEntry(entries.get(position));
-                        retrieveEntries();
                     }
                 });
             }
@@ -120,16 +119,7 @@ public class JournalActivity extends AppCompatActivity implements com.alistairho
         });
 
         mDb = AppDatabase.getInstance(getApplicationContext());
-    }
 
-    /**
-     * This method is called after this activity has been paused or restarted.
-     * Often, this is after new data has been inserted through an AddTaskActivity,
-     * so this re-queries the database data for any changes.
-     */
-    @Override
-    protected void onResume() {
-        super.onResume();
         retrieveEntries();
     }
 
@@ -143,6 +133,7 @@ public class JournalActivity extends AppCompatActivity implements com.alistairho
                 entries.observe((LifecycleOwner) this, new Observer<List<JournalEntry>>() {
                     @Override
                     public void onChanged(@Nullable List<JournalEntry> journalEntries) {
+                        Log.d(TAG, "Receiving database update from LiveData.");
                         mAdapter.setEntries(journalEntries);
                     }
                 });
