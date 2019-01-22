@@ -13,16 +13,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.alistairholmes.devjournal.database.AppDatabase;
 import com.alistairholmes.devjournal.database.JournalEntry;
+import com.alistairholmes.devjournal.viewmodels.AddEntryViewModel;
+import com.alistairholmes.devjournal.viewmodels.AddEntryViewModelFactory;
 
 import java.util.Date;
 
-public class AddEntryActivity extends AppCompatActivity {
+public class AddEntryActivity extends FragmentActivity {
 
     // Extra for the entry ID to be received in the intent
     public static final String EXTRA_ENTRY_ID = "extraEntryId";
@@ -67,8 +71,14 @@ public class AddEntryActivity extends AppCompatActivity {
             if (mEntryId == DEFAULT_ENTRY_ID) {
                 // populate the UI
                 mEntryId = intent.getIntExtra(EXTRA_ENTRY_ID, DEFAULT_ENTRY_ID);
-                final LiveData<JournalEntry> entry = mDb.journalDao().loadEntryById(mEntryId);
-                entry.observe((LifecycleOwner) this, new Observer<JournalEntry>() {
+                // Declare a AddTaskViewModelFactory using mDb and mTaskId
+                AddEntryViewModelFactory factory = new AddEntryViewModelFactory(mDb, mEntryId);
+                // Declare a AddTaskViewModel variable and initialize it by calling ViewModelProviders.of
+                // for that use the factory created above AddTaskViewModel
+                final AddEntryViewModel  viewModel =
+                        ViewModelProviders.of(this).get(AddEntryViewModel.class);
+                // Observe the LiveData object in the ViewModel.
+                viewModel.getEntries().observe((LifecycleOwner) this, new Observer<JournalEntry>() {
                     @Override
                     public void onChanged(JournalEntry journalEntry) {
                         Log.d(TAG, "Receiving update from LiveData.");
