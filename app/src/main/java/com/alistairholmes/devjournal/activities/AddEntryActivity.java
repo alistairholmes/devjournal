@@ -23,6 +23,7 @@ import com.alistairholmes.devjournal.database.AppDatabase;
 import com.alistairholmes.devjournal.database.JournalEntry;
 import com.alistairholmes.devjournal.viewmodels.AddEntryViewModel;
 import com.alistairholmes.devjournal.viewmodels.AddEntryViewModelFactory;
+import com.alistairholmes.devjournal.viewmodels.JournalViewModel;
 
 import java.util.Date;
 
@@ -147,7 +148,7 @@ public class AddEntryActivity extends FragmentActivity {
                 // call finish in any case
                 if (mEntryId == DEFAULT_ENTRY_ID) {
                     // insert new task
-                    mDb.journalDao().insertEntry(entry);
+                    JournalViewModel.insert(entry);
                 } else {
                     //update task
                     entry.setId(mEntryId);

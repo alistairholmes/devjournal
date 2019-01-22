@@ -14,10 +14,10 @@ import java.util.List;
 public interface JournalDao {
 
     @Query("SELECT * FROM `Journal Entries` ORDER BY date DESC ")
-    LiveData<List<JournalEntry>> loadAllEntries();
+    LiveData<List<JournalEntry>> getEntries();
 
     @Insert
-    void insertEntry(JournalEntry journalEntry);
+    void insertEntry(JournalEntry[] journalEntry);
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     void updateEntry(JournalEntry journalEntry);
