@@ -1,6 +1,5 @@
 package com.alistairholmes.devjournal.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.support.design.widget.FloatingActionButton;
@@ -9,19 +8,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.alistairholmes.devjournal.AddEntryActivity;
 import com.alistairholmes.devjournal.AppExecutors;
@@ -29,12 +27,13 @@ import com.alistairholmes.devjournal.JournalAdapter;
 import com.alistairholmes.devjournal.R;
 import com.alistairholmes.devjournal.database.AppDatabase;
 import com.alistairholmes.devjournal.database.JournalEntry;
+import com.alistairholmes.devjournal.viewmodels.JournalViewModel;
 
 import java.util.List;
 
 import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
-public class JournalActivity extends AppCompatActivity implements com.alistairholmes.devjournal.JournalAdapter.ItemClickListener{
+public class JournalActivity extends FragmentActivity implements com.alistairholmes.devjournal.JournalAdapter.ItemClickListener{
 
     // Constant for logging
     private static final String TAG = JournalActivity.class.getSimpleName();
@@ -120,24 +119,20 @@ public class JournalActivity extends AppCompatActivity implements com.alistairho
 
         mDb = AppDatabase.getInstance(getApplicationContext());
 
-        retrieveEntries();
+        setupViewModel();
     }
 
-    private void retrieveEntries() {
+    private void setupViewModel() {
 
-        Log.d(TAG, "Actively retrieving the tasks from the DataBase");
-
-                final LiveData<List<JournalEntry>> entries = mDb.journalDao().loadAllEntries();
-                // We will be able to simplify this once we learn more
-                // about Android Architecture Components
-                entries.observe((LifecycleOwner) this, new Observer<List<JournalEntry>>() {
-                    @Override
-                    public void onChanged(@Nullable List<JournalEntry> journalEntries) {
-                        Log.d(TAG, "Receiving database update from LiveData.");
-                        mAdapter.setEntries(journalEntries);
-                    }
-                });
-            }
+        JournalViewModel viewModel = ViewModelProviders.of(this).get(JournalViewModel.class);
+        viewModel.getEntries().observe(this, new Observer<List<JournalEntry>>() {
+                @Override
+                public void onChanged(@Nullable List<JournalEntry> journalEntries) {
+                    Log.d(TAG, "Receiving database update from LiveData.");
+                    mAdapter.setEntries(journalEntries);
+                }
+            });
+        }
 
 
     @Override
