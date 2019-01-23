@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.paging.PagedList;
 
 import com.alistairholmes.devjournal.database.JournalEntry;
 import com.alistairholmes.devjournal.database.JournalRepository;

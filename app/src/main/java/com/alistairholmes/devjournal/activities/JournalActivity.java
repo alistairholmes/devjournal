@@ -5,6 +5,8 @@ import android.os.Build;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+
+import androidx.paging.PagedList;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,6 +29,7 @@ import com.alistairholmes.devjournal.database.AppDatabase;
 import com.alistairholmes.devjournal.database.JournalEntry;
 import com.alistairholmes.devjournal.viewmodels.JournalViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
@@ -92,10 +95,16 @@ public class JournalActivity extends AppCompatActivity implements com.alistairho
                 AppExecutors.getInstance().diskIO().execute(new Runnable() {
                     @Override
                     public void run() {
-                        int position = viewHolder.getAdapterPosition();
-                        List<JournalEntry> entries = mAdapter.getEntries();
+                        final int position = viewHolder.getAdapterPosition();
+                        final List<JournalEntry> entries = mAdapter.getEntries();
                         mDb.journalDao().deleteEntry(entries.get(position));
+
+                        View parentView = findViewById(R.id.coordinator_layout);
+                        Snackbar snackbar = Snackbar.make(parentView, "Todo Item Deleted",
+                                Snackbar.LENGTH_LONG);
+                        snackbar.show();
                     }
+
                 });
             }
         }).attachToRecyclerView(mRecyclerView);
@@ -125,7 +134,8 @@ public class JournalActivity extends AppCompatActivity implements com.alistairho
 
         JournalViewModel viewModel = ViewModelProviders.of(this).get(JournalViewModel.class);
         viewModel.getEntries().observe(this, new Observer<List<JournalEntry>>() {
-                @Override
+
+            @Override
                 public void onChanged(@Nullable List<JournalEntry> journalEntries) {
                     Log.d(TAG, "Receiving database update from LiveData.");
                     mAdapter.setEntries(journalEntries);

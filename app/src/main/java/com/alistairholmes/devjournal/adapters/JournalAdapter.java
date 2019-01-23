@@ -1,7 +1,9 @@
 package com.alistairholmes.devjournal.adapters;
 
+import android.content.ClipData;
 import android.content.Context;
 import androidx.annotation.NonNull;
+import androidx.paging.PagedList;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -137,5 +139,6 @@ public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.JournalV
             int elementId = mJournalEntries.get(getAdapterPosition()).getId();
             mItemClickListener.onItemClickListener(elementId);
         }
+
     }
 }
