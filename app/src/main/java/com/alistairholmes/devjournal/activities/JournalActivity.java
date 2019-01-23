@@ -2,45 +2,44 @@ package com.alistairholmes.devjournal.activities;
 
 import android.content.Intent;
 import android.os.Build;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
-import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.alistairholmes.devjournal.AddEntryActivity;
-import com.alistairholmes.devjournal.AppExecutors;
-import com.alistairholmes.devjournal.JournalAdapter;
+import com.alistairholmes.devjournal.activities.AddEntryActivity;
+import com.alistairholmes.devjournal.utils.AppExecutors;
+import com.alistairholmes.devjournal.adapters.JournalAdapter;
 import com.alistairholmes.devjournal.R;
 import com.alistairholmes.devjournal.database.AppDatabase;
 import com.alistairholmes.devjournal.database.JournalEntry;
 import com.alistairholmes.devjournal.viewmodels.JournalViewModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
-import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
+import static androidx.recyclerview.widget.DividerItemDecoration.VERTICAL;
 
-public class JournalActivity extends FragmentActivity implements com.alistairholmes.devjournal.JournalAdapter.ItemClickListener{
+public class JournalActivity extends AppCompatActivity implements com.alistairholmes.devjournal.adapters.JournalAdapter.ItemClickListener{
 
     // Constant for logging
     private static final String TAG = JournalActivity.class.getSimpleName();
 
     // Member variables for the adapter and RecyclerView
     private RecyclerView mRecyclerView;
-    private com.alistairholmes.devjournal.JournalAdapter mAdapter;
+    private com.alistairholmes.devjournal.adapters.JournalAdapter mAdapter;
 
     private AppDatabase mDb;
 
@@ -63,7 +62,7 @@ public class JournalActivity extends FragmentActivity implements com.alistairhol
 
         // Set the layout for the RecyclerView to be a linear layout, which measures and
         // positions items within a RecyclerView into a linear list
-        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
         // Initialize the adapter and attach it to the RecyclerView

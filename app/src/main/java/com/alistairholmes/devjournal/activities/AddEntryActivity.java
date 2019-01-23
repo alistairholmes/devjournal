@@ -1,33 +1,31 @@
-package com.alistairholmes.devjournal;
+package com.alistairholmes.devjournal.activities;
 
 import android.content.Intent;
 import android.os.Build;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioGroup;
 
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.alistairholmes.devjournal.R;
 import com.alistairholmes.devjournal.database.AppDatabase;
 import com.alistairholmes.devjournal.database.JournalEntry;
 import com.alistairholmes.devjournal.viewmodels.AddEntryViewModel;
 import com.alistairholmes.devjournal.viewmodels.AddEntryViewModelFactory;
 import com.alistairholmes.devjournal.viewmodels.JournalViewModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Date;
 
-public class AddEntryActivity extends FragmentActivity {
+public class AddEntryActivity extends AppCompatActivity {
 
     // Extra for the entry ID to be received in the intent
     public static final String EXTRA_ENTRY_ID = "extraEntryId";
@@ -140,7 +138,7 @@ public class AddEntryActivity extends FragmentActivity {
 
 
         final JournalEntry entry = new JournalEntry(title,description, date);
-        com.alistairholmes.devjournal.AppExecutors.getInstance().diskIO().execute(new Runnable() {
+        com.alistairholmes.devjournal.utils.AppExecutors.getInstance().diskIO().execute(new Runnable() {
             @Override
             public void run() {
                 // insert the entry only if mEntryId matches DEFAULT_ENTRY_ID
