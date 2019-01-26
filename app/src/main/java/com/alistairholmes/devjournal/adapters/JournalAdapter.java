@@ -4,7 +4,11 @@ import android.content.ClipData;
 import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.paging.PagedList;
+import androidx.paging.PagedListAdapter;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.graphics.Movie;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +21,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
 
-public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.JournalViewHolder>{
+public class JournalAdapter extends PagedListAdapter<JournalEntry, JournalAdapter.JournalViewHolder> {
 
     // Constant for date format
     private static final String DATE_FORMAT_DAY = "dd";
@@ -40,6 +44,7 @@ public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.JournalV
      * @param listener the ItemClickListener
      */
     public JournalAdapter(Context context, ItemClickListener listener) {
+        super(DIFF_CALLBACK);
         mContext = context;
         mItemClickListener = listener;
     }
@@ -141,4 +146,24 @@ public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.JournalV
         }
 
     }
+
+    /**
+     * This diff callback informs the PagedListAdapter how to compute list differences when new
+     * PagedLists arrive.
+     */
+    private static final DiffUtil.ItemCallback DIFF_CALLBACK = new DiffUtil.ItemCallback<JournalEntry>() {
+        @Override
+        public boolean areItemsTheSame(
+                @NonNull JournalEntry oldEntry, @NonNull JournalEntry newEntry) {
+            return oldEntry.getId() == newEntry.getId();
+        }
+
+        @Override
+        public boolean areContentsTheSame(
+                @NonNull JournalEntry oldEntry, @NonNull JournalEntry newEntry) {
+            // NOTE: if you use equals, your object must properly override Object#equals()
+            // Incorrectly returning false here will result in too many animations.
+            return oldEntry.equals(newEntry);
+        }
+    };
 }

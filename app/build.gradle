@@ -21,7 +21,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //noinspection GradleCompatible
-    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
     implementation 'com.google.firebase:firebase-auth:16.0.5'
 
@@ -33,7 +33,7 @@ dependencies {
     androidTestImplementation 'androidx.arch.core:core-testing:2.0.0'
     annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.0.0'
 
-    //add Recycler view dependencies; must match SDK version
+    //add Recycler view dependencies must match SDK version
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
 
     //FAB dependencies
@@ -42,6 +42,11 @@ dependencies {
     //LiveData and View Model
     def lifecycle_version = "2.0.0"
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+
+    // Paging
+    def paging_version = "2.1.0"
+
+    implementation "androidx.paging:paging-runtime:$paging_version"
 
     //Room Dependencies
     def room_version = "2.1.0-alpha03"
