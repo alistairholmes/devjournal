@@ -9,7 +9,7 @@
     android:paddingTop="8dp"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="8dp"
-    tools:context="com.alistairholmes.devjournal.JournalActivity">
+    tools:context="com.alistairholmes.devjournal.activities.JournalActivity">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -19,7 +19,7 @@
 
         <TextView
             android:id="@+id/entry_day"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:layout_marginBottom="2dp"
@@ -30,7 +30,7 @@
 
         <TextView
             android:id="@+id/entry_month"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorAccent"
             android:textSize="16sp"

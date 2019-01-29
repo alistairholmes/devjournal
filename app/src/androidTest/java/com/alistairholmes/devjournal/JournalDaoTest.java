@@ -1,10 +1,11 @@
 package com.alistairholmes.devjournal;
 
-import android.arch.core.executor.testing.InstantTaskExecutorRule;
-import android.arch.persistence.room.Room;
-import android.content.Context;
-import android.support.test.InstrumentationRegistry;
-import android.support.test.runner.AndroidJUnit4;
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
+import androidx.lifecycle.LiveData;
+import androidx.room.Room;
+
+import androidx.test.InstrumentationRegistry;
+import androidx.test.runner.AndroidJUnit4;
 
 import com.alistairholmes.devjournal.database.AppDatabase;
 import com.alistairholmes.devjournal.database.JournalDao;
@@ -55,13 +56,6 @@ public class JournalDaoTest {
 
     // For every test we are closing the database and re-creating it again before
     // running another test, this is called testing in isolation
-
-
-    @Test
-    public void onFetchingNotes_shouldGetEmptyList_IfTable_IsEmpty() throws Exception {
-        List<JournalEntry> journalEntryList = mJournalDao.loadAllEntries();
-        assertTrue(journalEntryList.isEmpty());
-    }
 
     /*@Test
     public void onInsertingNote_checkIf_RowIsCorrect() throws Exception {

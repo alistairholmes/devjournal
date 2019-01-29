@@ -1,19 +1,27 @@
-package com.alistairholmes.devjournal;
+package com.alistairholmes.devjournal.activities;
 
 import android.content.Intent;
 import android.os.Build;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioGroup;
 
+import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+
+import com.alistairholmes.devjournal.R;
 import com.alistairholmes.devjournal.database.AppDatabase;
 import com.alistairholmes.devjournal.database.JournalEntry;
+import com.alistairholmes.devjournal.viewmodels.AddEntryViewModel;
+import com.alistairholmes.devjournal.viewmodels.AddEntryViewModelFactory;
+import com.alistairholmes.devjournal.viewmodels.JournalViewModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Date;
 
@@ -61,29 +69,23 @@ public class AddEntryActivity extends AppCompatActivity {
 
             if (mEntryId == DEFAULT_ENTRY_ID) {
                 // populate the UI
-                // Assign the value of EXTRA_ENTRY_ID in the intent to mEntryId
-                // Use DEFAULT_ENTRY_ID as the default
                 mEntryId = intent.getIntExtra(EXTRA_ENTRY_ID, DEFAULT_ENTRY_ID);
-                // Get the diskIO Executor from the instance of AppExecutors and
-                // call the diskIO execute method with a new Runnable and implement its run method
-                AppExecutors.getInstance().diskIO().execute(new Runnable() {
+                // Declare a AddTaskViewModelFactory using mDb and mTaskId
+                AddEntryViewModelFactory factory = new AddEntryViewModelFactory(mDb, mEntryId);
+                // Declare a AddTaskViewModel variable and initialize it by calling ViewModelProviders.of
+                // for that use the factory created above AddTaskViewModel
+                final AddEntryViewModel  viewModel =
+                        ViewModelProviders.of(this).get(AddEntryViewModel.class);
+                // Observe the LiveData object in the ViewModel.
+                viewModel.getEntries().observe((LifecycleOwner) this, new Observer<JournalEntry>() {
                     @Override
-                    public void run() {
-                        // Use the loadEntryById method to retrieve the entry with id mEntryId and
-                        // assign its value to a final JournalEntry variable
-                        final JournalEntry entry = mDb.journalDao().loadEntryById(mEntryId);
-                        // CCall the populateUI method with the retrieve entries
-                        // Remember to wrap it in a call to runOnUiThread
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                populateUI(entry);
-                            }
-                        });
+                    public void onChanged(JournalEntry journalEntry) {
+                        Log.d(TAG, "Receiving update from LiveData.");
+                        populateUI(journalEntry);
                     }
                 });
             }
-        }
+            }
     }
 
     @Override
@@ -136,7 +138,7 @@ public class AddEntryActivity extends AppCompatActivity {
 
 
         final JournalEntry entry = new JournalEntry(title,description, date);
-        AppExecutors.getInstance().diskIO().execute(new Runnable() {
+        com.alistairholmes.devjournal.utils.AppExecutors.getInstance().diskIO().execute(new Runnable() {
             @Override
             public void run() {
                 // insert the entry only if mEntryId matches DEFAULT_ENTRY_ID
@@ -144,7 +146,7 @@ public class AddEntryActivity extends AppCompatActivity {
                 // call finish in any case
                 if (mEntryId == DEFAULT_ENTRY_ID) {
                     // insert new task
-                    mDb.journalDao().insertEntry(entry);
+                    JournalViewModel.insert(entry);
                 } else {
                     //update task
                     entry.setId(mEntryId);

@@ -1,11 +1,12 @@
 package com.alistairholmes.devjournal.database;
 
-import android.arch.persistence.room.Dao;
-import android.arch.persistence.room.Delete;
-import android.arch.persistence.room.Insert;
-import android.arch.persistence.room.OnConflictStrategy;
-import android.arch.persistence.room.Query;
-import android.arch.persistence.room.Update;
+import androidx.lifecycle.LiveData;
+import androidx.room.Dao;
+import androidx.room.Delete;
+import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
+import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -13,10 +14,10 @@ import java.util.List;
 public interface JournalDao {
 
     @Query("SELECT * FROM `Journal Entries` ORDER BY date DESC ")
-    List<JournalEntry> loadAllEntries();
+    LiveData<List<JournalEntry>> getEntries();
 
     @Insert
-    void insertEntry(JournalEntry journalEntry);
+    void insertEntry(JournalEntry[] journalEntry);
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     void updateEntry(JournalEntry journalEntry);
@@ -27,5 +28,5 @@ public interface JournalDao {
     // Create a Query method named loadEntryById that receives an int id and returns a JournalEntry Object
     // The query for this method should get all the data for that id in the task table
     @Query("SELECT * FROM `Journal Entries` WHERE id = :id")
-    JournalEntry loadEntryById(int id);
+    LiveData<JournalEntry> loadEntryById(int id);
 }

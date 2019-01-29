@@ -1,37 +1,48 @@
-package com.alistairholmes.devjournal;
+package com.alistairholmes.devjournal.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
+
+import androidx.paging.PagedList;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
-import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+
+import com.alistairholmes.devjournal.activities.AddEntryActivity;
+import com.alistairholmes.devjournal.utils.AppExecutors;
+import com.alistairholmes.devjournal.adapters.JournalAdapter;
+import com.alistairholmes.devjournal.R;
 import com.alistairholmes.devjournal.database.AppDatabase;
 import com.alistairholmes.devjournal.database.JournalEntry;
+import com.alistairholmes.devjournal.viewmodels.JournalViewModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
-import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
+import static androidx.recyclerview.widget.DividerItemDecoration.VERTICAL;
 
-public class JournalActivity extends AppCompatActivity implements JournalAdapter.ItemClickListener{
+public class JournalActivity extends AppCompatActivity implements com.alistairholmes.devjournal.adapters.JournalAdapter.ItemClickListener{
 
     // Constant for logging
     private static final String TAG = JournalActivity.class.getSimpleName();
 
     // Member variables for the adapter and RecyclerView
     private RecyclerView mRecyclerView;
-    private JournalAdapter mAdapter;
-
+    private com.alistairholmes.devjournal.adapters.JournalAdapter mAdapter;
 
     private AppDatabase mDb;
 
@@ -84,11 +95,16 @@ public class JournalActivity extends AppCompatActivity implements JournalAdapter
                 AppExecutors.getInstance().diskIO().execute(new Runnable() {
                     @Override
                     public void run() {
-                        int position = viewHolder.getAdapterPosition();
-                        List<JournalEntry> entries = mAdapter.getEntries();
+                        final int position = viewHolder.getAdapterPosition();
+                        final List<JournalEntry> entries = mAdapter.getEntries();
                         mDb.journalDao().deleteEntry(entries.get(position));
-                        retrieveEntries();
+
+                        View parentView = findViewById(R.id.coordinator_layout);
+                        Snackbar snackbar = Snackbar.make(parentView, "Todo Item Deleted",
+                                Snackbar.LENGTH_LONG);
+                        snackbar.show();
                     }
+
                 });
             }
         }).attachToRecyclerView(mRecyclerView);
@@ -110,35 +126,23 @@ public class JournalActivity extends AppCompatActivity implements JournalAdapter
         });
 
         mDb = AppDatabase.getInstance(getApplicationContext());
+
+        setupViewModel();
     }
 
-    /**
-     * This method is called after this activity has been paused or restarted.
-     * Often, this is after new data has been inserted through an AddTaskActivity,
-     * so this re-queries the database data for any changes.
-     */
-    @Override
-    protected void onResume() {
-        super.onResume();
-        retrieveEntries();
-    }
+    private void setupViewModel() {
 
-    private void retrieveEntries() {
-        AppExecutors.getInstance().diskIO().execute(new Runnable() {
+        JournalViewModel viewModel = ViewModelProviders.of(this).get(JournalViewModel.class);
+        viewModel.getEntries().observe(this, new Observer<List<JournalEntry>>() {
+
             @Override
-            public void run() {
-                final List<JournalEntry> entries = mDb.journalDao().loadAllEntries();
-                // We will be able to simplify this once we learn more
-                // about Android Architecture Components
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        mAdapter.setEntries(entries);
-                    }
-                });
-            }
-        });
-    }
+                public void onChanged(@Nullable List<JournalEntry> journalEntries) {
+                    Log.d(TAG, "Receiving database update from LiveData.");
+                    mAdapter.setEntries(journalEntries);
+                }
+            });
+        }
+
 
     @Override
     public void onItemClickListener(int itemId) {
