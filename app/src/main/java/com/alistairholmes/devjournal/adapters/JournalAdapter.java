@@ -1,5 +1,6 @@
 package com.alistairholmes.devjournal.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.Context;
 import androidx.annotation.NonNull;
@@ -158,6 +159,7 @@ public class JournalAdapter extends PagedListAdapter<JournalEntry, JournalAdapte
             return oldEntry.getId() == newEntry.getId();
         }
 
+        @SuppressLint("DiffUtilEquals")
         @Override
         public boolean areContentsTheSame(
                 @NonNull JournalEntry oldEntry, @NonNull JournalEntry newEntry) {
