@@ -230,7 +230,6 @@ public class AddEntryActivity extends AppCompatActivity {
                 }
                 finish();
 
-
             }
         });
     }
@@ -239,7 +238,6 @@ public class AddEntryActivity extends AppCompatActivity {
      * Creates a Notification channel, for OREO and higher.
      */
     public void createNotificationChannel() {
-
         // Create a notification manager object.
         mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 

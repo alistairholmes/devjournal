@@ -2,7 +2,8 @@
     This vertical linear layout contains all the views in the AddTaskActivity code.
     This includes an EditText to addEntrytask description, and buttons to select a priority
 -->
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -15,9 +16,9 @@
     tools:context=".activities.AddEntryActivity">
 
     <!-- EditText for Entrytask description input -->
-    <EditText
+    <com.alistairholmes.devjournal.utils.CustomEditText
         android:id="@+id/editTextTitle"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
@@ -27,7 +28,9 @@
         android:background="@android:color/transparent"
         android:gravity="start"
         android:hint="Add a title"
+        android:textColorHint="#8B8B8B"
         android:textColor="#8B8B8B"
+        android:inputType="textCapSentences"
         android:paddingBottom="@dimen/activity_horizontal_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,13 +76,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:shadowColor="@color/colorAccent"
         android:text="Set Reminder"
         android:textColor="#8B8B8B"
-        android:shadowColor="@color/colorAccent"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextEntryDescription" />
