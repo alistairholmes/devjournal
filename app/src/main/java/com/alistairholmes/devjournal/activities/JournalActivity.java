@@ -1,6 +1,7 @@
 package com.alistairholmes.devjournal.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +14,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 
@@ -48,11 +52,13 @@ public class JournalActivity extends AppCompatActivity implements com.alistairho
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         //must be called before setContentView(...)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.setStatusBarColor(getResources().getColor(R.color.colorPrimary));
         }
+
         ActionBar actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.gradient));
 
@@ -151,6 +157,35 @@ public class JournalActivity extends AppCompatActivity implements com.alistairho
         Intent intent = new Intent(JournalActivity.this, AddEntryActivity.class);
         intent.putExtra(AddEntryActivity.EXTRA_ENTRY_ID, itemId);
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        /* Use AppCompatActivity's method getMenuInflater to get a handle on the menu inflater */
+        MenuInflater inflater = getMenuInflater();
+        /* Use the inflater's inflate method to inflate our menu layout to this menu */
+        inflater.inflate(R.menu.menu_actionbar, menu);
+        /* Return true so that the menu is displayed in the Toolbar */
+        return true;
+    }
+
+    /**
+     * Callback invoked when a menu item was selected from this Activity's menu.
+     * @param item The menu item that was selected by the user
+     * @return true if you handle the menu click here, false otherwise
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if (id == R.id.menu_settings) {
+            Intent intent = new Intent(JournalActivity.this, SettingsActivity.class);
+            startActivity(intent);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 
