@@ -36,7 +36,6 @@ dependencies {
     // Espresso
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.1.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.1.0'
 
     //add Recycler view dependencies must match SDK version
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
@@ -61,9 +60,9 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:$room_version"
 
     //Firebase Dependencies
-    implementation 'com.google.firebase:firebase-auth:16.0.5'
+    implementation 'com.google.firebase:firebase-auth:16.1.0'
     implementation 'com.google.android.gms:play-services-auth:16.0.1'
-    implementation 'com.google.firebase:firebase-core:16.0.4'
+    implementation 'com.google.firebase:firebase-core:16.0.7'
     testImplementation 'junit:junit:4.12'
 
 }
