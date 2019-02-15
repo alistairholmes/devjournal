@@ -62,9 +62,6 @@
     <string name="google_status_fmt">Utilisateur Google: %s</string>
     <string name="google_title_text">Connexion Google</string>
 
-    <string name="facebook_status_fmt">Utilisateur Facebook: %s</string>
-    <string name="facebook_title_text">Connexion Facebook</string>
-
     <string name="emailpassword_status_fmt">Utilisateur Email: %1$s (verifié: %2$b)</string>
     <string name="emailpassword_title_text">Email et mot de passe</string>
 
