@@ -34,6 +34,7 @@ import com.alistairholmes.devjournal.database.JournalEntry;
 import com.alistairholmes.devjournal.viewmodels.JournalViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
 
@@ -43,6 +44,9 @@ public class JournalActivity extends AppCompatActivity implements com.alistairho
 
     // Constant for logging
     private static final String TAG = JournalActivity.class.getSimpleName();
+
+    // Firebase Auth for signing out
+    private FirebaseAuth mAuth;
 
     // Member variables for the adapter and RecyclerView
     private RecyclerView mRecyclerView;
@@ -65,6 +69,8 @@ public class JournalActivity extends AppCompatActivity implements com.alistairho
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_journal);
 
+        // Initialize Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
 
         // Set the RecyclerView to its corresponding view
         mRecyclerView = findViewById(R.id.recyclerView_journalEntries);
@@ -176,11 +182,16 @@ public class JournalActivity extends AppCompatActivity implements com.alistairho
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         int id = item.getItemId();
-
         if (id == R.id.menu_settings) {
             Intent intent = new Intent(JournalActivity.this, SettingsActivity.class);
+            startActivity(intent);
+            return true;
+        }
+
+        if (id == R.id.menu_sign_out) {
+            signOut();
+            Intent intent = new Intent(JournalActivity.this, SignUpActivity.class);
             startActivity(intent);
             return true;
         }
@@ -188,5 +199,8 @@ public class JournalActivity extends AppCompatActivity implements com.alistairho
         return super.onOptionsItemSelected(item);
     }
 
-
+    // Signs user out
+    private void signOut() {
+        mAuth.signOut();
+    }
 }

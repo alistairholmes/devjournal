@@ -52,10 +52,4 @@
         <item name="android:textSize">24sp</item>
     </style>
 
-    <style name="AppTheme.DarkMode" parent="Theme.AppCompat">
-        <item name="colorPrimary">@color/darkColorPrimary</item>
-        <item name="colorPrimary">@color/darkColorPrimaryDark</item>
-        <item name="colorPrimary">@color/darkColorAccent</item>
-    </style>
-
 </resources>

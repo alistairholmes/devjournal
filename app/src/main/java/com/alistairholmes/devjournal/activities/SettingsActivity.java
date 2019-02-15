@@ -26,7 +26,7 @@ public class SettingsActivity extends AppCompatActivity {
         boolean useDarkMode = preferences.getBoolean(PREF_DARK_THEME, false);
 
         if(useDarkMode) {
-            setTheme(R.style.AppTheme_DarkMode);
+            setTheme(R.style.AppTheme);
         }
 
         super.onCreate(savedInstanceState);
