@@ -23,7 +23,7 @@ licenses:
     - 'google-gdk-license-.+'
 before_script:
     - mkdir -p "$ANDROID_HOME/licenses"
-    - cp ./license/* "$ANDROID_HOME/licenses/"
+    - cp ./google-licenses/* "$ANDROID_HOME/licenses/"
 script:
     - ./gradlew build check
 
