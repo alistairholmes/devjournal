@@ -29,3 +29,5 @@ before_script:
 script:
     - ./gradlew build check
 
+notifications:
+  slack: alistairprojects:iJhGp6K8eJi0OOFOr0OID4Mk
