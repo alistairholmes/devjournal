@@ -82,4 +82,35 @@
     <string name="id_fmt">User ID: %s</string>
     <string name="email_fmt">Email: %s</string>
 
+    <!-- Onboarding Strings -->
+    <!-- Headers -->
+    <string name="ob_header1">"Add tasks, reminders and ideas quickly "</string>
+    <string name="ob_header2">"Find your recent work and dive back fast. "</string>
+    <string name="ob_header3">"See all of your Tasks and complete them. "</string>
+    <!-- Footers -->
+    <string name="ob_footer1">"Add and edit your tasks for the day. "</string>
+    <string name="ob_footer2">"You can easily search recent tasks and dive back in fast. "</string>
+    <string name="ob_footer3">"Easy overview of all tasks, work in progress, done tasks and notes. "</string>
+
+    <!-- Libraries -->
+    <string name="about_libraries_card_title" translatable="false">Libraries</string>
+    <string name="about_library1_title" translatable="false">Retrofit</string>
+    <string name="about_library1_subtitle" translatable="false">Type-safe HTTP client for Android and Java by Square, Inc.</string>
+    <string name="about_library2_title" translatable="false">Glide</string>
+    <string name="about_library2_subtitle" translatable="false">An image loading and caching library for Android focused on smooth scrolling</string>
+    <string name="about_library3_title" translatable="false">AndroidX</string>
+    <string name="about_library3_subtitle" translatable="false">AndroidX is the open-source project that the Android team uses to develop, test, package, version and release libraries within Jetpack.</string>
+    <string name="about_library4_title" translatable="false">Firebase Auth</string>
+    <string name="about_library4_subtitle" translatable="false">Email authentication using Firebase</string>
+    <string name="about_library5_title" translatable="false">Room</string>
+    <string name="about_library5_subtitle" translatable="false">The Room persistence library provides an abstraction layer over SQLite to allow for more robust database access while harnessing the full power of SQLite.</string>
+    <string name="about_library6_title" translatable="false">Espresso</string>
+    <string name="about_library6_subtitle" translatable="false">UI Testing framework made by Google for ensuring user experience</string>
+    <string name="about_library10_title" translatable="false">Gson</string>
+    <string name="about_library10_subtitle" translatable="false">A Java serialization/deserialization library to convert Java Objects into JSON and back</string>
+    <string name="about_library11_title" translatable="false">Stetho</string>
+    <string name="about_library11_subtitle" translatable="false">Stetho is a debug bridge for Android applications, enabling the powerful Chrome Developer Tools and much more.</string>
+    <string name="about_library12_title" translatable="false">Material Design</string>
+    <string name="about_library12_subtitle" translatable="false">A set of UI guidelines made available by Google</string>
+
 </resources>

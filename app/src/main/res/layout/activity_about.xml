@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_about"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal"
+    android:gravity="center_horizontal"
+    tools:context=".activities.AboutActivity"
+    tools:ignore="MissingPrefix">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/app_bar"
+        android:theme="@style/ToolbarTheme"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:elevation="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="?attr/homeAsUpIndicator"
+        app:title="About"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardUseCompatPadding="true"
+                app:cardBackgroundColor="#ffff"
+                android:layout_marginTop="10dp"
+                android:paddingTop="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:textStyle="bold"
+                        style="@style/about_title_text"
+                        android:text="Info" />
+
+                    <LinearLayout
+                        android:id="@+id/container_about_app"
+                        style="@style/about_entry">
+
+                        <ImageView
+                            android:src="@drawable/about_info"
+                            style="@style/material_icon" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:text="DevJournal"
+                                style="@style/about_title_text"/>
+
+                            <TextView
+                                android:text="Simple note taking app for your dev life."
+                                style="@style/about_subtitle_text"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/container_about_app_website"
+                        style="@style/about_entry">
+
+                        <ImageView
+                            android:src="@drawable/baseline_public_24"
+                            style="@style/material_icon" />
+
+                        <TextView
+                            android:text="Website"
+                            style="@style/about_title_text"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/container_about_app_github"
+                        style="@style/about_entry">
+
+                        <ImageView
+                            android:src="@drawable/baseline_star_24"
+                            style="@style/material_icon" />
+
+                        <TextView
+                            android:text="Star on Github"
+                            style="@style/about_title_text"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/container_about_app_privacy"
+                        style="@style/about_entry">
+
+                        <ImageView
+                            android:src="@drawable/about_info"
+                            style="@style/material_icon" />
+
+                        <TextView
+                            android:text="Privacy Policy"
+                            style="@style/about_title_text"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardUseCompatPadding="true"
+                app:cardBackgroundColor="#ffff"
+                android:layout_marginTop="10dp"
+                android:paddingTop="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:textStyle="bold"
+                        style="@style/about_title_text"
+                        android:text="Developer" />
+
+                    <LinearLayout
+                        android:id="@+id/container_about_author"
+                        style="@style/about_entry">
+
+                        <ImageView
+                            android:src="@drawable/baseline_account_box_24"
+                            style="@style/material_icon" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:text="Alistair Holmes"
+                                style="@style/about_title_text"/>
+
+                            <TextView
+                                android:text="Bulawayo, Zimbabwe"
+                                style="@style/about_subtitle_text"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/container_about_website"
+                        style="@style/about_entry">
+
+                        <ImageView
+                            style="@style/material_icon"
+                            android:src="@drawable/baseline_public_24" />
+
+                        <TextView
+                            style="@style/about_title_text"
+                            android:text="Website" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/container_about_instagram"
+                        style="@style/about_entry">
+
+                        <ImageView
+                            android:src="@drawable/about_instagram"
+                            style="@style/material_icon" />
+
+                        <TextView
+                            android:text="Follow on Instagram"
+                            style="@style/about_title_text"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardUseCompatPadding="true"
+                app:cardBackgroundColor="#ffff"
+                android:layout_marginTop="10dp"
+                android:paddingTop="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/about_title_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="Support Development"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:id="@+id/container_about_rate"
+                        style="@style/about_entry">
+
+                        <ImageView
+                            style="@style/material_icon"
+                            android:src="@drawable/baseline_star_24" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/about_title_text"
+                                android:text="Rate" />
+
+                            <TextView
+                                style="@style/about_subtitle_text"
+                                android:text="If you like Digital Nomad Jobs, rate it on the Play Store" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/container_about_donate"
+                        style="@style/about_entry">
+
+                        <ImageView
+                            style="@style/material_icon"
+                            android:src="@drawable/baseline_mood_24" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/about_title_text"
+                                android:text="Donate" />
+
+                            <TextView
+                                style="@style/about_subtitle_text"
+                                android:text="If you really like DevJournal, consider supporting its development by sending me a couple of dollars" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/container_about_bug"
+                        style="@style/about_entry">
+
+                        <ImageView
+                            style="@style/material_icon"
+                            android:src="@drawable/baseline_bug_report_24" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/about_title_text"
+                                android:text="Report Bugs" />
+
+                            <TextView
+                                style="@style/about_subtitle_text"
+                                android:paddingBottom="10dp"
+                                android:text="Report bugs or request new features" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardUseCompatPadding="true"
+                app:cardBackgroundColor="#ffff"
+                android:layout_marginTop="10dp"
+                android:paddingTop="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:textStyle="bold"
+                        style="@style/about_title_text"
+                        android:text="Libraries" />
+
+                    <LinearLayout
+                        android:id="@+id/container_about_library1"
+                        style="@style/about_library">
+
+                        <TextView
+                            android:text="@string/about_library1_title"
+                            style="@style/about_title_text"/>
+
+                        <TextView
+                            android:text="@string/about_library1_subtitle"
+                            style="@style/about_subtitle_text"/>
+
+                    </LinearLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#EEEE" />
+
+                    <LinearLayout
+                        android:id="@+id/container_about_library2"
+                        style="@style/about_library">
+
+                        <TextView
+                            android:text="@string/about_library2_title"
+                            style="@style/about_title_text"/>
+
+                        <TextView
+                            android:text="@string/about_library2_subtitle"
+                            style="@style/about_subtitle_text"/>
+
+                    </LinearLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#EEEE" />
+
+                    <LinearLayout
+                        android:id="@+id/container_about_library3"
+                        style="@style/about_library">
+
+                        <TextView
+                            android:text="@string/about_library3_title"
+                            style="@style/about_title_text"/>
+
+                        <TextView
+                            android:text="@string/about_library3_subtitle"
+                            style="@style/about_subtitle_text"/>
+
+                    </LinearLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#EEEE" />
+
+                    <LinearLayout
+                        android:id="@+id/container_about_library4"
+                        style="@style/about_library">
+
+                        <TextView
+                            android:text="@string/about_library4_title"
+                            style="@style/about_title_text"/>
+
+                        <TextView
+                            android:text="@string/about_library4_subtitle"
+                            style="@style/about_subtitle_text"/>
+
+                    </LinearLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#EEEE" />
+
+                    <LinearLayout
+                        android:id="@+id/container_about_library5"
+                        style="@style/about_library">
+
+                        <TextView
+                            android:text="@string/about_library5_title"
+                            style="@style/about_title_text"/>
+
+                        <TextView
+                            android:text="@string/about_library5_subtitle"
+                            style="@style/about_subtitle_text"/>
+
+                    </LinearLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#EEEE" />
+
+                    <LinearLayout
+                        android:id="@+id/container_about_library6"
+                        style="@style/about_library">
+
+                        <TextView
+                            android:text="@string/about_library6_title"
+                            style="@style/about_title_text"/>
+
+                        <TextView
+                            android:text="@string/about_library6_subtitle"
+                            style="@style/about_subtitle_text"/>
+
+                    </LinearLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#EEEE" />
+
+                    <LinearLayout
+                        android:id="@+id/container_about_library10"
+                        style="@style/about_library">
+
+                        <TextView
+                            android:text="@string/about_library10_title"
+                            style="@style/about_title_text"/>
+
+                        <TextView
+                            android:text="@string/about_library10_subtitle"
+                            style="@style/about_subtitle_text"/>
+
+                    </LinearLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#EEEE" />
+
+                    <LinearLayout
+                        android:id="@+id/container_about_library11"
+                        style="@style/about_library">
+
+                        <TextView
+                            android:text="@string/about_library11_title"
+                            style="@style/about_title_text"/>
+
+                        <TextView
+                            android:text="@string/about_library11_subtitle"
+                            style="@style/about_subtitle_text"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.alistairholmes.devjournal">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -17,14 +16,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activities.SignUpActivity">
+        <activity android:name=".activities.AboutActivity"
+            android:theme="@style/LoginTheme"></activity>
+        <activity android:name=".activities.OnboardingActivity"></activity>
+        <activity android:name=".activities.SignUpActivity"
+            android:theme="@style/ThemeOverlay.MyNoTitleActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
-                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activities.SettingsActivity"/>
+        <activity android:name=".activities.SettingsActivity" />
         <activity android:name=".activities.BaseActivity" />
         <activity android:name=".activities.LoginActivity" />
         <activity
@@ -42,8 +45,15 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".activities.JournalActivity" />
+        <activity android:name=".activities.JournalActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
 
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
 
         <receiver android:name=".utils.AlarmReceiver" />
     </application>
