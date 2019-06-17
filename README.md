@@ -1,19 +1,24 @@
 # Dev Journal
-[![forthebadge](https://forthebadge.com/images/badges/built-for-android.svg)](https://forthebadge.com)
+[![Rating badge](https://img.shields.io/badge/Rating-4.8%E2%98%85-blue.svg)](https://play.google.com/store/apps/details?id=com.alistairholmes.devjournal)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/b3ff4806fb3443b687ec694fb13608e5)](https://www.codacy.com/app/alistairholmes95/devjournal?utm_source=alistair_holmes@bitbucket.org&amp;utm_medium=referral&amp;utm_content=alistair_holmes/devjournal&amp;utm_campaign=Badge_Grade)
 [![Build Status](https://travis-ci.org/alistairholmes/devjournal.svg?branch=development)](https://travis-ci.org/alistairholmes/devjournal)
+[![Maintainability](https://api.codeclimate.com/v1/badges/560e6ef8268e629a9487/maintainability)](https://codeclimate.com/github/alistairholmes/devjournal/maintainability)
 
 <img src="https://user-images.githubusercontent.com/22801227/42134580-de690e68-7d3e-11e8-86e8-e2b708d30f24.png" width="750">
+
+[![forthebadge](https://forthebadge.com/images/badges/built-for-android.svg)](https://forthebadge.com)
 
 **Dev Journal** was made for the 7 days of code challenge for the first phase of the ALC with Google Scholarship.
 
 # Features
 
-* Sign In with Google Authentication
+* Sign In with E-mail
 * Add / View / Modify Journal entries
 * Swipe to Delete
 * Database Persistence with [Room](https://developer.android.com/topic/libraries/architecture/room)
 * Split-Screen / Multi-window support for easy copy/paste from other apps.
+* Task Notification Reminders
+* Toast and Snackbar Messages
 * Unique Design
 * The application now supports the French language.
 
@@ -58,7 +63,7 @@ Contributions are welcome!
 
 	MIT License
 
-	Copyright (c) 2018 Alistair Holmes
+	Copyright (c) 2019 Alistair Holmes
 
 	Permission is hereby granted, free of charge, to any person obtaining a copy
 	of this software and associated documentation files (the "Software"), to deal
