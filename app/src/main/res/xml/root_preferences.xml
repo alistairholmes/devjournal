@@ -20,7 +20,7 @@
     <PreferenceCategory app:title="@string/username_header">
 
         <EditTextPreference
-            app:key="signature"
+            app:key="username"
             app:title="@string/username_title"
             app:useSimpleSummaryProvider="true" />
 
@@ -33,11 +33,10 @@
             app:title="@string/reminder_title" />
 
         <ListPreference
-            app:dependency="reminder"
-            app:defaultValue="15 minutes"
+            app:defaultValue="Never"
             app:entries="@array/reminder_frequency_titles"
-            app:entryValues="@array/reply_values"
-            app:key="reply"
+            app:entryValues="@array/reminder_frequency_values"
+            app:key="reminder_frequency"
             app:title="@string/reminder_frequency_title"
             app:useSimpleSummaryProvider="true" />
 
@@ -45,9 +44,13 @@
 
     <PreferenceCategory app:title="@string/theme_title">
 
-        <SwitchPreferenceCompat
-            app:key="theme"
-            android:title="@string/dark_mode"/>
+        <ListPreference
+            app:defaultValue="Set by Battery Saver"
+            app:entries="@array/theme_titles"
+            app:entryValues="@array/theme_values"
+            app:key="theme_switch"
+            app:title="@string/dark_mode"
+            app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
 

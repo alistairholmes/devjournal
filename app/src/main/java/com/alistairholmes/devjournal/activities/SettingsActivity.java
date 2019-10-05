@@ -10,6 +10,8 @@ import com.alistairholmes.devjournal.R;
 
 public class SettingsActivity extends AppCompatActivity {
 
+    public static final String KEY_PREF_THEME_SWITCH = "theme_switch";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
