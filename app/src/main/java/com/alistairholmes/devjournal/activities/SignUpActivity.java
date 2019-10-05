@@ -1,28 +1,29 @@
 package com.alistairholmes.devjournal.activities;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.alistairholmes.devjournal.R;
-import com.alistairholmes.devjournal.activities.JournalActivity;
-import com.alistairholmes.devjournal.activities.SignUpActivity;
+import androidx.annotation.NonNull;
 
+import com.alistairholmes.devjournal.R;
+import com.alistairholmes.devjournal.activities.BaseActivity;
+import com.alistairholmes.devjournal.activities.JournalActivity;
+import com.alistairholmes.devjournal.activities.LoginActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class SignUpActivity extends com.alistairholmes.devjournal.activities.BaseActivity implements
-        View.OnClickListener {
+    public class SignUpActivity extends BaseActivity implements
+            View.OnClickListener {
 
     private static final String TAG = "EmailPassword";
 

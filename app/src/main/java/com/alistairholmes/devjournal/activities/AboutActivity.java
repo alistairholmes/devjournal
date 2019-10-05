@@ -24,12 +24,12 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_about);
 
         mToolbar = findViewById(R.id.app_bar);
-        setSupportActionBar(mToolbar);
+        /*setSupportActionBar(mToolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
             mToolbar.setNavigationOnClickListener(view -> onBackPressed());
-        }
+        }*/
 
         LinearLayout [] containers = new LinearLayout[] {
                 findViewById(R.id.container_about_app_website),

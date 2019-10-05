@@ -16,8 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activities.AboutActivity"
-            android:theme="@style/LoginTheme"></activity>
+        <activity android:name=".activities.AboutActivity"></activity>
         <activity android:name=".activities.OnboardingActivity"></activity>
         <activity android:name=".activities.SignUpActivity"
             android:theme="@style/ThemeOverlay.MyNoTitleActivity">
