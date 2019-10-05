@@ -113,4 +113,41 @@
     <string name="about_library12_title" translatable="false">Material Design</string>
     <string name="about_library12_subtitle" translatable="false">A set of UI guidelines made available by Google</string>
 
+    <!-- Settings -->
+    <string name="settings" translatable="false">Settings</string>
+    <string name="about" translatable="false">About</string>
+
+
+
+    <!-- Preference Titles -->
+    <string name="username_header" translatable="false">Account</string>
+    <string name="reminders_header" translatable="false">Reminders</string>
+
+    <!-- Account Preferences -->
+    <string name="username_title" translatable="false">Your name</string>
+    <string name="reminder_frequency_title" translatable="false">Remind me after:</string>
+
+    <!-- Reminder Preferences -->
+    <string name="reminder_title" translatable="false">Set reminders for tasks</string>
+    <string-array name="reminder_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="reminder_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Theme Preferences -->
+    <string name="theme_title" translatable="false">Theme</string>
+    <string name="dark_mode" translatable="false">Enable Dark Mode</string>
+
 </resources>

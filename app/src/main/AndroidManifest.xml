@@ -16,9 +16,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activities.AboutActivity"></activity>
-        <activity android:name=".activities.OnboardingActivity"></activity>
-        <activity android:name=".activities.SignUpActivity"
+        <activity
+            android:name=".activities.SettingsActivity"
+            android:label="@string/settings"
+            android:parentActivityName=".activities.JournalActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.alistairholmes.devjournal.activities.JournalActivity" />
+        </activity>
+        <activity android:name=".activities.AboutActivity" />
+        <activity android:name=".activities.OnboardingActivity" />
+        <activity
+            android:name=".activities.SignUpActivity"
             android:theme="@style/ThemeOverlay.MyNoTitleActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,7 +35,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.SettingsActivity" />
         <activity android:name=".activities.BaseActivity" />
         <activity android:name=".activities.LoginActivity" />
         <activity
@@ -48,10 +56,6 @@
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
-
-            <meta-data
-                android:name="android.app.searchable"
-                android:resource="@xml/searchable" />
         </activity>
 
         <receiver android:name=".utils.AlarmReceiver" />

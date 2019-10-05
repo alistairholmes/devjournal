@@ -6,17 +6,17 @@
 
     <item
         android:id="@+id/menu_settings"
-        android:title="Settings"
+        android:title="@string/settings"
         app:showAsAction="never"/>
 
     <item
         android:id="@+id/menu_about"
-        android:title="About"
+        android:title="@string/about"
         app:showAsAction="never"/>
 
     <item
         android:id="@+id/menu_sign_out"
-        android:title="Sign Out"
+        android:title="@string/sign_out"
         app:showAsAction="never"/>
 
 
