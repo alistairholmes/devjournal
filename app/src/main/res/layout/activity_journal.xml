@@ -8,7 +8,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5">
+    android:background="#F5F5F5">z
 
     <!-- RecyclerView that is responsible for holding JournalEntry data -->
     <androidx.recyclerview.widget.RecyclerView

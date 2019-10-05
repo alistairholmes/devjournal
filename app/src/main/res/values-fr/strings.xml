@@ -81,4 +81,14 @@
 
     <string name="id_fmt">Identifiant: %s</string>
     <string name="email_fmt">Email: %s</string>
+
+    <!-- Onboarding Strings -->
+    <!-- Headers -->
+    <string name="ob_header1">"Ajoutez des tâches, des rappels et des idées rapidement "</string>
+    <string name="ob_header2">"Trouvez votre travail récent et plongez rapidement. "</string>
+    <string name="ob_header3">"Voir toutes vos tâches et les terminer. "</string>
+    <!-- Footers -->
+    <string name="ob_footer1">"Ajoutez et modifiez vos tâches pour la journée. "</string>
+    <string name="ob_footer2">"Vous pouvez facilement rechercher des tâches récentes et vous replonger rapidement. "</string>
+    <string name="ob_footer3">"Aperçu facile de toutes les tâches, travaux en cours, tâches terminées et notes. "</string>
 </resources>

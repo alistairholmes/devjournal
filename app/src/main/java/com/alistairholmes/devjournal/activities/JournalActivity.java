@@ -1,5 +1,8 @@
 package com.alistairholmes.devjournal.activities;
 
+import android.app.Activity;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -19,6 +22,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.widget.SearchView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
@@ -137,9 +141,18 @@ public class JournalActivity extends AppCompatActivity implements com.alistairho
             }
         });
 
+        // Get the search intent, verify the action and get the query
+        Intent intent = getIntent();
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+           // doMySearch(query);
+        }
+
+
         mDb = AppDatabase.getInstance(getApplicationContext());
 
         setupViewModel();
+
+        searchIntent(getIntent());
     }
 
     private void setupViewModel() {
@@ -171,6 +184,7 @@ public class JournalActivity extends AppCompatActivity implements com.alistairho
         MenuInflater inflater = getMenuInflater();
         /* Use the inflater's inflate method to inflate our menu layout to this menu */
         inflater.inflate(R.menu.menu_actionbar, menu);
+
         /* Return true so that the menu is displayed in the Toolbar */
         return true;
     }
@@ -196,8 +210,31 @@ public class JournalActivity extends AppCompatActivity implements com.alistairho
             return true;
         }
 
+        if (id == R.id.menu_about) {
+            Intent intent = new Intent(JournalActivity.this, AboutActivity.class);
+            startActivity(intent);
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
+
+    // Method that handles the search functionality
+    private void searchIntent(Intent intent) {
+        String query = null;
+
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            query = intent.getStringExtra(SearchManager.QUERY);
+            //use the query to search your data somehow
+            //doMySearch(query);
+
+        }
+    }
+
+    @Override protected void onNewIntent(Intent intent) {
+        searchIntent(intent);
+    }
+
 
     // Signs user out
     private void signOut() {
