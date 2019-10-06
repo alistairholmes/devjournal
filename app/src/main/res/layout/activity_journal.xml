@@ -8,7 +8,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5">z
+    android:background="@color/backgroundColor">
 
     <!-- RecyclerView that is responsible for holding JournalEntry data -->
     <androidx.recyclerview.widget.RecyclerView
@@ -18,7 +18,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginRight="8dp"
-        android:background="#FFFFFF"
+        android:background="@color/backgroundColor"
         android:clipToPadding="false"
         android:paddingBottom="80dp" />
 

@@ -10,7 +10,9 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.paging.PagedList;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,6 +25,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
@@ -153,6 +156,29 @@ public class JournalActivity extends AppCompatActivity implements com.alistairho
         setupViewModel();
 
         searchIntent(getIntent());
+
+        // Default Settings
+        PreferenceManager.setDefaultValues(this, R.xml.root_preferences, false);
+
+        // Read Settings
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        // Reminder
+        String reminderPref = sharedPref.getString("reminder_frequency", "-1");
+        // Theme
+        String themePref = sharedPref.getString("theme_switch", "3");
+
+       // Toast.makeText(this, themePref.toString(), Toast.LENGTH_LONG).show(); // Testing Purposes
+
+        switch (themePref) {
+            case "1": getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO); // Light
+                    break;
+            case "2": getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES); // Dark
+                break;
+            case "3": getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
+                break;
+            case "-1": getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+                break;
+        }
     }
 
     private void setupViewModel() {
@@ -229,10 +255,6 @@ public class JournalActivity extends AppCompatActivity implements com.alistairho
             //doMySearch(query);
 
         }
-    }
-
-    @Override protected void onNewIntent(Intent intent) {
-        searchIntent(intent);
     }
 
 
