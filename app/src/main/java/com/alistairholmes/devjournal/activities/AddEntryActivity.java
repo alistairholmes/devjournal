@@ -5,6 +5,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import androidx.appcompat.app.ActionBar;
@@ -18,11 +19,13 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.preference.PreferenceManager;
 
 import com.alistairholmes.devjournal.R;
 import com.alistairholmes.devjournal.database.AppDatabase;
@@ -161,7 +164,28 @@ public class AddEntryActivity extends AppCompatActivity {
 
         mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
+// Default Settings
+        PreferenceManager.setDefaultValues(this, R.xml.root_preferences, false);
 
+        // Read Settings
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        // Reminder
+        String reminderPref = sharedPref.getString("reminder_frequency", "-1");
+        // Theme
+        String themePref = sharedPref.getString("theme_switch", "3");
+
+        // Toast.makeText(this, themePref.toString(), Toast.LENGTH_LONG).show(); // Testing Purposes
+
+        switch (themePref) {
+            case "1": getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO); // Light
+                break;
+            case "2": getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES); // Dark
+                break;
+            case "3": getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
+                break;
+            case "-1": getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+                break;
+        }
     }
 
     @Override
