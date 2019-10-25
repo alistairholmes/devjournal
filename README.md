@@ -19,7 +19,8 @@
 * Split-Screen / Multi-window support for easy copy/paste from other apps.
 * Task Notification Reminders
 * Toast and Snackbar Messages
-* Unique Design
+* Material Design
+* Dark Mode
 * The application now supports the French language.
 
 # Download
