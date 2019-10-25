@@ -2,7 +2,8 @@
     This layout defines the main activity screen and displays a listtaskEntriesasks (if they exist),
     and a floating action button that launches another activity.
 -->
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/coordinator_layout"
     xmlns:tools="http://schemas.android.com/tools"
@@ -11,28 +12,61 @@
     android:background="@color/backgroundColor">
 
     <!-- RecyclerView that is responsible for holding JournalEntry data -->
+
+    <!-- Floating action button that launches AddTaskActivity when clicked -->
+
+    <TextView
+        android:id="@+id/tv_welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Welcome"
+        android:fontFamily="@font/ubuntu_medium"
+        android:textSize="20sp"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text=""
+        android:fontFamily="@font/ubuntu_medium"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_welcome"
+        app:layout_constraintTop_toTopOf="@+id/tv_welcome" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_journalEntries"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:background="@color/backgroundColor"
         android:clipToPadding="false"
-        android:paddingBottom="80dp" />
+        android:paddingBottom="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_welcome" />
 
-    <!-- Floating action button that launches AddTaskActivity when clicked -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
+        android:layout_marginBottom="16dp"
         android:tint="@android:color/white"
-        app:srcCompat="@android:drawable/ic_input_add"
         app:layout_anchor="@id/recyclerView_journalEntries"
-        app:layout_anchorGravity="bottom|right|end"/>
+        app:layout_anchorGravity="bottom|right|end"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_input_add" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
 

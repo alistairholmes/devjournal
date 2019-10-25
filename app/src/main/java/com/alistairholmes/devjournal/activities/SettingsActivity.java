@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.EditTextPreference;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.alistairholmes.devjournal.R;
@@ -11,6 +12,7 @@ import com.alistairholmes.devjournal.R;
 public class SettingsActivity extends AppCompatActivity {
 
     public static final String KEY_PREF_THEME_SWITCH = "theme_switch";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

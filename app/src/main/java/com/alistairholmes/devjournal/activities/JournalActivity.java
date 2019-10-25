@@ -25,6 +25,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -43,7 +44,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
+import java.util.Calendar;
 
 import static androidx.recyclerview.widget.DividerItemDecoration.VERTICAL;
 
@@ -79,6 +83,45 @@ public class JournalActivity extends AppCompatActivity implements com.alistairho
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
+        // Default Settings
+        PreferenceManager.setDefaultValues(this, R.xml.root_preferences, false);
+
+        // Read Settings
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        // User Name
+        TextView username = findViewById(R.id.tv_username);
+        username.setText(sharedPref.getString("username", ""));
+        // Reminder
+        String reminderPref = sharedPref.getString("reminder_frequency", "-1");
+        // Theme
+        String themePref = sharedPref.getString("theme_switch", "3");
+
+        switch (themePref) {
+            case "1": getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO); // Light
+                break;
+            case "2": getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES); // Dark
+                break;
+            case "3": getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
+                break;
+            case "-1": getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+                break;
+        }
+
+        // Get current time
+        Calendar c = Calendar.getInstance(); // Get current time
+        // Gets the current hour of the day from the calendar created ( from 1 to 24 )
+        int hr1 = c.get(Calendar.HOUR_OF_DAY);
+
+        TextView welcomeMsg = findViewById(R.id.tv_welcome);
+
+        if(hr1<12) {
+            welcomeMsg.setText("Good Morning");
+        } else if(hr1>12&& hr1<17) {
+            welcomeMsg.setText("Good Afternoon");
+        } else if(hr1>17&& hr1<20) {
+            welcomeMsg.setText("Good Evening");
+        }
+
         // Set the RecyclerView to its corresponding view
         mRecyclerView = findViewById(R.id.recyclerView_journalEntries);
 
@@ -110,7 +153,7 @@ public class JournalActivity extends AppCompatActivity implements com.alistairho
             // Called when a user swipes left or right on a ViewHolder
             @Override
             public void onSwiped(final RecyclerView.ViewHolder viewHolder, int swipeDir) {
-                // Here is where you'll implement swipe to delete
+                // Implement swipe to delete
                 AppExecutors.getInstance().diskIO().execute(new Runnable() {
                     @Override
                     public void run() {
@@ -119,8 +162,14 @@ public class JournalActivity extends AppCompatActivity implements com.alistairho
                         mDb.journalDao().deleteEntry(entries.get(position));
 
                         View parentView = findViewById(R.id.coordinator_layout);
-                        Snackbar snackbar = Snackbar.make(parentView, "Todo Item Deleted",
-                                Snackbar.LENGTH_LONG);
+                        Snackbar snackbar = Snackbar.make(parentView, "Todo Item Deleted", Snackbar.LENGTH_LONG)
+                                                    .setAction("UNDO", new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View view) {
+                                                            // Restore deleted note
+
+                                                        }
+                                                    });
                         snackbar.show();
                     }
 
@@ -155,30 +204,6 @@ public class JournalActivity extends AppCompatActivity implements com.alistairho
 
         setupViewModel();
 
-        searchIntent(getIntent());
-
-        // Default Settings
-        PreferenceManager.setDefaultValues(this, R.xml.root_preferences, false);
-
-        // Read Settings
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        // Reminder
-        String reminderPref = sharedPref.getString("reminder_frequency", "-1");
-        // Theme
-        String themePref = sharedPref.getString("theme_switch", "3");
-
-       // Toast.makeText(this, themePref.toString(), Toast.LENGTH_LONG).show(); // Testing Purposes
-
-        switch (themePref) {
-            case "1": getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO); // Light
-                    break;
-            case "2": getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES); // Dark
-                break;
-            case "3": getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
-                break;
-            case "-1": getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
-                break;
-        }
     }
 
     private void setupViewModel() {
@@ -244,19 +269,6 @@ public class JournalActivity extends AppCompatActivity implements com.alistairho
 
         return super.onOptionsItemSelected(item);
     }
-
-    // Method that handles the search functionality
-    private void searchIntent(Intent intent) {
-        String query = null;
-
-        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            query = intent.getStringExtra(SearchManager.QUERY);
-            //use the query to search your data somehow
-            //doMySearch(query);
-
-        }
-    }
-
 
     // Signs user out
     private void signOut() {
