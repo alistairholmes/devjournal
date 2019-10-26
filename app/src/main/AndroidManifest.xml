@@ -36,7 +36,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.BaseActivity" />
-        <activity android:name=".activities.LoginActivity" />
+        <activity android:name=".activities.LoginActivity"
+            android:theme="@style/ThemeOverlay.MyNoTitleActivity"/>
         <activity
             android:name=".activities.AddEntryActivity"
             tools:ignore="WrongManifestParent">
