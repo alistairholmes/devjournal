@@ -41,6 +41,10 @@ public class JournalEntry {
         this.id = id;
     }
 
+    public void setTitle(String s) {
+        this.title = s;
+    }
+
     public String getTitle() {
         return title;
     }
